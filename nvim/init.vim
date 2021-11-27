@@ -235,4 +235,6 @@ vnoremap <expr>a InVisualBlockMode() ? "\<s-a>" : "a"
 vnoremap v <esc>
 
 "===== local_setting =====
-runtime ./init_local.vim
+for s:path in split(glob('~/.config/nvim/rc/*.vim'), "\n")
+  exe 'source ' . s:path
+endfor
