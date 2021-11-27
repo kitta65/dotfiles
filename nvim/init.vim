@@ -41,8 +41,8 @@ highlight Comment ctermfg=34
 
 "===== prettier =====
 function MyPrettier()
-    let l:current_line = line(".")
-    return "o\<esc>dd:%!npx prettier --stdin-filepath %" . l:current_line . "G"
+    let current_line = line(".")
+    return "o\<esc>dd:%!npx prettier --stdin-filepath %" . current_line . "G"
 endfunction
 "PrettierAsync may be better but cannot be used with vim-bookmarks
 nnoremap <expr><leader>p MyPrettier()
@@ -143,9 +143,9 @@ nnoremap gg gg0
 vnoremap gg gg0
 vnoremap $ $h
 function My0()
-    let l:myzero_next_col = strchars(matchstr(getline("."), "^\\s*"))+1
-    let l:myzero_current_col = col(".")
-    if 1 < l:myzero_next_col && l:myzero_next_col < l:myzero_current_col
+    let myzero_next_col = strchars(matchstr(getline("."), "^\\s*"))+1
+    let myzero_current_col = col(".")
+    if 1 < myzero_next_col && myzero_next_col < myzero_current_col
         return "^"
     else
         return "0"
@@ -187,9 +187,9 @@ inoremap (<cr> ()<left><cr><esc><s-o>
 inoremap [<cr> []<left><cr><esc><s-o>
 command! -nargs=* MyQuote call MyQuote(<f-args>)
 function MyQuote(l, ...)
-    let l:r = get(a:000, 0, a:l)
+    let r = get(a:000, 0, a:l)
     execute "normal! `>"
-    execute "normal! a" . l:r
+    execute "normal! a" . r
     execute "normal! `<"
     execute "normal! i" . a:l
 endfunction
@@ -214,15 +214,14 @@ inoremap <c-u> <esc>viw<s-u>ea
 nnoremap <leader><cr> <c-]>
 
 nnoremap / /\v
-noremap! jj <esc>
-noremap! ｊｊ <esc>
+noremap! jk <esc>
 set number
 set list
 set listchars=tab:»\ ,trail:•,eol:↲,extends:»,precedes:«
 
 " This function should be used in visual mode
 function InVisualBlockMode()
-    let l:mode = mode()
+    let mode = mode()
     if mode == ""
         return "1"
     else
