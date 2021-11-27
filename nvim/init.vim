@@ -102,8 +102,7 @@ vmap <tab> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 nnoremap <leader>s :CocCommand snippets.openSnippetFiles<cr>
-"mapping <cr> to <c-y> is recommended, but i don't like it
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 function! s:show_documentation()
@@ -125,18 +124,8 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 "===== move cursor =====
-noremap! <c-h> <left>
-tnoremap <c-h> <left>
-noremap! <c-j> <down>
-tnoremap <c-j> <down>
-noremap! <c-k> <up>
-tnoremap <c-k> <up>
 noremap! <c-l> <right>
 tnoremap <c-l> <right>
-inoremap <c-e> <esc>ea
-tnoremap <c-e> <esc>ea
-inoremap <c-b> <esc>bi
-tnoremap <c-b> <esc>bi
 nnoremap <s-g> <s-g>$
 vnoremap <s-g> <s-g>$
 nnoremap gg gg0
@@ -217,7 +206,7 @@ nnoremap / /\v
 noremap! jk <esc>
 set number
 set list
-set listchars=tab:»\ ,trail:•,eol:↲,extends:»,precedes:«
+set listchars=tab:»\ ,trail:•,eol:↲,extends:»,precedes:«,nbsp:.
 
 " This function should be used in visual mode
 function InVisualBlockMode()
