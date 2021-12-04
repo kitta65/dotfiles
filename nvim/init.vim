@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 " common
 Plug 'airblade/vim-gitgutter'
+Plug 'dr666m1/vim-clipboard'
 Plug 'itchyny/lightline.vim'
 Plug 'kassio/neoterm'
 Plug 'MattesGroeger/vim-bookmarks'
@@ -25,6 +26,9 @@ autocmd Filetype rust,javascriptreact,bq,sql syntax sync minlines=10000
 filetype plugin indent on
 set cursorline
 let g:python3_host_prog = '$HOME/.pyenv/shims/python'
+set expandtab
+set tabstop=2
+set shiftwidth=2
 
 "===== NERDTree =====
 nnoremap <leader>f :NERDTreeFocus<cr>
@@ -58,7 +62,7 @@ autocmd Filetype markdown,json,tex set conceallevel=0
 let g:neoterm_default_mod = 'vertical'
 let g:neoterm_autoscroll = 1
 let g:neoterm_auto_repl_cmd = 0
-tnoremap jj <c-\><c-n>
+tnoremap jk <c-\><c-n>
 nnoremap <expr><leader>r g:myrepl_current_status == "none" ?
     \ MyRepl() : ":TREPLSendLine\<cr>\<down>0"
 "nnoremap :: q:iT<space>
@@ -127,10 +131,12 @@ endif
 noremap! <c-l> <right>
 tnoremap <c-l> <right>
 nnoremap <s-g> <s-g>$
-vnoremap <s-g> <s-g>$
+vnoremap <s-g> <s-g>g_
 nnoremap gg gg0
 vnoremap gg gg0
-vnoremap $ $h
+nnoremap gg gg0
+vnoremap gg gg0
+vnoremap $ g_
 function My0()
     let myzero_next_col = strchars(matchstr(getline("."), "^\\s*"))+1
     let myzero_current_col = col(".")
