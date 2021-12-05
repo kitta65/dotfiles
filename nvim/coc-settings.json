@@ -1,0 +1,21 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["rust"],
+  "snippets": {
+    "loadFromExtensions": false
+  },
+  "languageserver": {
+    "bigquery": {
+      "command": "bq-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["bigquery"],
+      "settings": {
+        "bqExtensionVSCode": {
+          "diagnostic": {
+            "forVSCode": false,
+            "dryRunOnSave": true
+          }
+        }
+      }
+    }
+  }
+}
