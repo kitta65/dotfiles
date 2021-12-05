@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 " common
 Plug 'airblade/vim-gitgutter'
+Plug 'dr666m1/vim-bigquery'
 Plug 'dr666m1/vim-clipboard'
 Plug 'itchyny/lightline.vim'
 Plug 'kassio/neoterm'
@@ -128,12 +129,14 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 "===== move cursor =====
+noremap! <c-j> <down>
+tnoremap <c-j> <down>
+noremap! <c-k> <up>
+tnoremap <c-k> <up>
 noremap! <c-l> <right>
 tnoremap <c-l> <right>
 nnoremap <s-g> <s-g>$
 vnoremap <s-g> <s-g>g_
-nnoremap gg gg0
-vnoremap gg gg0
 nnoremap gg gg0
 vnoremap gg gg0
 vnoremap $ g_
@@ -193,7 +196,6 @@ vnoremap '  :<c-u>call<space>MyQuote("'")<cr>
 vnoremap {  :<c-u>call<space>MyQuote("{",     "}")<cr>
 vnoremap (  :<c-u>call<space>MyQuote("(",     ")")<cr>
 vnoremap [  :<c-u>call<space>MyQuote("[",     "]")<cr>
-vnoremap `  :<c-u>call<space>MyQuote("`",     "`")<cr>
 vnoremap <  :<c-u>call<space>MyQuote("<",     ">")<cr>
 vnoremap /* :<c-u>call<space>MyQuote("/* ",   " */")<cr>
 vnoremap <! :<c-u>call<space>MyQuote("<!-- ", " -->")<cr>
@@ -202,6 +204,8 @@ vnoremap q <esc>:MyQuote<space>
 "===== yank & paste =====
 autocmd InsertLeave * set nopaste
 vnoremap y y`>
+vnoremap <leader>y <esc>:ClipboardYank<cr>
+nnoremap <leader>v :ClipboardPut<cr>
 
 "===== other =====
 cabbrev vrc $MYVIMRC
