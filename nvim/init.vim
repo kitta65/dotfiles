@@ -52,6 +52,7 @@ command! -nargs=0 UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 
 "===== indentLine =====
 autocmd Filetype markdown,json,tex IndentLinesDisable
+let g:indentLine_setConceal = 0
 
 "===== neoterm =====
 let g:neoterm_default_mod = 'vertical'
