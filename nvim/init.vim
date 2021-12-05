@@ -21,15 +21,10 @@ call plug#end()
 
 "===== common =====
 let mapleader = "\<space>"
-set timeoutlen=500
 syntax on
 autocmd Filetype rust,javascriptreact,bq,sql syntax sync minlines=10000
 filetype plugin indent on
-set cursorline
 let g:python3_host_prog = '$HOME/.pyenv/shims/python'
-set expandtab
-set tabstop=2
-set shiftwidth=2
 
 "===== NERDTree =====
 nnoremap <leader>f :NERDTreeFocus<cr>
@@ -57,7 +52,6 @@ command! -nargs=0 UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 
 "===== indentLine =====
 autocmd Filetype markdown,json,tex IndentLinesDisable
-autocmd Filetype markdown,json,tex set conceallevel=0
 
 "===== neoterm =====
 let g:neoterm_default_mod = 'vertical'
@@ -202,7 +196,6 @@ vnoremap <! :<c-u>call<space>MyQuote("<!-- ", " -->")<cr>
 vnoremap q <esc>:MyQuote<space>
 
 "===== yank & paste =====
-autocmd InsertLeave * set nopaste
 vnoremap y y`>
 vnoremap <leader>y <esc>:ClipboardYank<cr>
 nnoremap <leader>v :ClipboardPut<cr>
@@ -214,9 +207,6 @@ nnoremap <leader><cr> <c-]>
 
 nnoremap / /\v
 noremap! jk <esc>
-set number
-set list
-set listchars=tab:»\ ,trail:•,eol:↲,extends:»,precedes:«,nbsp:.
 
 " This function should be used in visual mode
 function InVisualBlockMode()
@@ -236,3 +226,4 @@ vnoremap v <esc>
 for s:path in split(glob('~/.config/nvim/rc/*.vim'), "\n")
   exe 'source ' . s:path
 endfor
+
