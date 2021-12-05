@@ -5,10 +5,6 @@ let mapleader = "\<space>"
 let maplocalleader = "\<space>"
 " }}}
 
-" NERDTree {{{
-nnoremap <leader>n :NERDTreeFocus<cr>
-" }}}
-
 " move {{{
 noremap! <c-j> <down>
 tnoremap <c-j> <down>
