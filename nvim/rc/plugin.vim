@@ -3,7 +3,6 @@ let g:bookmark_auto_save = 0
 " }}}
 
 " coc {{{
-command! UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 inoremap <silent><expr> <tab> coc#expandableOrJumpable() ? "\<c-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<cr>" : "\<tab>"
 vmap <tab> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<tab>'
@@ -21,14 +20,17 @@ function! s:show_documentation()
         execute '!' . &keywordprg . " " . expand('<cword>')
     endif
 endfunction
+
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-    nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-    nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-    inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-    inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-    vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-    vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  nnoremap <silent><nowait><expr> <c-n> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-n>"
+  nnoremap <silent><nowait><expr> <c-p> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-p>"
+  inoremap <silent><nowait><expr> <c-n> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <c-p> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <c-n> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-n>"
+  vnoremap <silent><nowait><expr> <c-p> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-p>"
 endif
+
+command! UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 " }}}
 
 " indentLine {{{

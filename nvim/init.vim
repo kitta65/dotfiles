@@ -30,7 +30,7 @@ colorscheme molokai
 highlight Comment ctermfg=34
 
 "===== prettier =====
-function MyPrettier()
+function! MyPrettier()
     let current_line = line(".")
     "return "o\<esc>dd:%!npx prettier --stdin-filepath %" . current_line . "G"
     return ":%!npx prettier --stdin-filepath %\<cr>"
@@ -41,7 +41,7 @@ nnoremap <expr> <leader>f MyPrettier()
 
 
 "===== move cursor =====
-function My0()
+function! My0()
     let myzero_next_col = strchars(matchstr(getline("."), "^\\s*"))+1
     let myzero_current_col = col(".")
     if 1 < myzero_next_col && myzero_next_col < myzero_current_col
