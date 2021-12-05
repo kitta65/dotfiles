@@ -43,9 +43,8 @@ function MyPrettier()
     return "o\<esc>dd:%!npx prettier --stdin-filepath %" . current_line . "G"
 endfunction
 "PrettierAsync may be better but cannot be used with vim-bookmarks
-nnoremap <expr><leader>f MyPrettier()
+nnoremap <expr> <leader>f MyPrettier()
 
-autocmd Filetype bq,sql nnoremap<buffer> <leader>p :call CocAction('format')<cr>
 command! -nargs=0 UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 
 "===== indentLine =====
