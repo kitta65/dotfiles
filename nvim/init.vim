@@ -1,4 +1,3 @@
-"===== vim-plug =====
 call plug#begin('~/.vim/plugged')
 " common
 Plug 'airblade/vim-gitgutter'
@@ -27,7 +26,6 @@ filetype plugin indent on
 let g:python3_host_prog = '$HOME/.pyenv/shims/python'
 
 "===== NERDTree =====
-nnoremap <leader>f :NERDTreeFocus<cr>
 let NERDTreeCustomOpenArgs = {'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden = 1
@@ -45,7 +43,7 @@ function MyPrettier()
     return "o\<esc>dd:%!npx prettier --stdin-filepath %" . current_line . "G"
 endfunction
 "PrettierAsync may be better but cannot be used with vim-bookmarks
-nnoremap <expr><leader>p MyPrettier()
+nnoremap <expr><leader>f MyPrettier()
 
 autocmd Filetype bq,sql nnoremap<buffer> <leader>p :call CocAction('format')<cr>
 command! -nargs=0 UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
@@ -124,17 +122,6 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 "===== move cursor =====
-noremap! <c-j> <down>
-tnoremap <c-j> <down>
-noremap! <c-k> <up>
-tnoremap <c-k> <up>
-noremap! <c-l> <right>
-tnoremap <c-l> <right>
-nnoremap <s-g> <s-g>$
-vnoremap <s-g> <s-g>g_
-nnoremap gg gg0
-vnoremap gg gg0
-vnoremap $ g_
 function My0()
     let myzero_next_col = strchars(matchstr(getline("."), "^\\s*"))+1
     let myzero_current_col = col(".")
@@ -147,17 +134,6 @@ function My0()
 endfunction
 nnoremap <expr>0 My0()
 vnoremap <expr>0 My0()
-
-"===== tab =====
-nnoremap <leader>n :tabe<cr>
-nnoremap <c-]> :tabn<cr>
-nnoremap <c-[> :tabp<cr>
-
-"===== window =====
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
 
 "===== quote & bracket =====
 inoremap ( )<left>(
@@ -196,13 +172,7 @@ vnoremap /* :<c-u>call<space>MyQuote("/* ",   " */")<cr>
 vnoremap <! :<c-u>call<space>MyQuote("<!-- ", " -->")<cr>
 vnoremap q <esc>:MyQuote<space>
 
-"===== yank & paste =====
-vnoremap y y`>
-vnoremap <leader>y <esc>:ClipboardYank<cr>
-nnoremap <leader>v :ClipboardPut<cr>
-
 "===== other =====
-cabbrev vrc $MYVIMRC
 inoremap <c-u> <esc>viw<s-u>ea
 nnoremap <leader><cr> <c-]>
 
@@ -223,7 +193,6 @@ vnoremap <expr>a InVisualBlockMode() ? "\<s-a>" : "a"
 " useful to exit from visual block mode.
 vnoremap v <esc>
 
-"===== local_setting =====
 for s:path in split(glob('~/.config/nvim/rc/*.vim'), "\n")
   exe 'source ' . s:path
 endfor
