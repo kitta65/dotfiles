@@ -1,0 +1,23 @@
+snippet init
+#standardSQL
+create temp function start_date() as (date '`date "+%Y-%m-%d"`');
+create temp function start_date_str(format string) as (
+	format_date(format, start_date())
+);
+create temp function end_date() as (date '`date "+%Y-%m-%d"`');
+create temp function end_date_str(format string) as (
+	format_date(format, end_date())
+);$0
+endsnippet
+
+snippet yyyymmdd "yyyymmdd" i
+'%Y%m%d'
+endsnippet
+
+snippet yyyy-mm-dd "yyyy-mm-dd" i
+'%Y-%m-%d'
+endsnippet
+
+snippet b
+between ${1:from} and ${2:end}${0}
+endsnippet

@@ -69,6 +69,7 @@ vnoremap <! :<c-u>call <SID>Quote("<!-- ", " -->")<cr>
 " other {{{
 nnoremap / /\v
 noremap! jk <esc>
+tnoremap jk <c-\><c-n>
 vnoremap v <esc>
 inoremap <c-u> <esc>viw<s-u>ea
 nnoremap <leader><cr> <c-]>

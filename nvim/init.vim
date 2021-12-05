@@ -8,7 +8,7 @@ Plug 'kassio/neoterm'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
-Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production'}
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'yggdroot/indentLine'
@@ -29,15 +29,6 @@ filetype plugin indent on
 
 colorscheme molokai
 highlight Comment ctermfg=34
-
-"===== prettier =====
-function! MyPrettier()
-    let current_line = line(".")
-    "return "o\<esc>dd:%!npx prettier --stdin-filepath %" . current_line . "G"
-    return ":%!npx prettier --stdin-filepath %\<cr>"
-endfunction
-"PrettierAsync may be better but cannot be used with vim-bookmarks
-nnoremap <expr> <leader>f MyPrettier()
 
 for s:path in glob('~/.config/nvim/rc/*.vim', 0, 1)
   exe 'source ' . s:path

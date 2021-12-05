@@ -3,22 +3,24 @@ let g:bookmark_auto_save = 0
 " }}}
 
 " coc {{{
+" See https://github.com/neoclide/coc-snippets .
 inoremap <silent><expr> <tab> coc#expandableOrJumpable() ? "\<c-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<cr>" : "\<tab>"
-vmap <tab> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
-nnoremap <leader>s :CocCommand snippets.openSnippetFiles<cr>
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" vmap <tab> <Plug>(coc-snippets-select)
+
+" See https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources .
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-inoremap <silent><expr> <c-space> coc#refresh()
 function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-        call CocActionAsync('doHover')
-    else
-        execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
 endfunction
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -30,60 +32,70 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-b>"
 endif
 
+nnoremap <leader>s :CocCommand snippets.openSnippetFiles<cr>
+inoremap <silent><expr> <c-space> coc#refresh()
 command! UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 " }}}
 
 " indentLine {{{
-let g:indentLine_setConceal = 0
+let g:indentLine_fileTypeExclude = ["nerdtree", "json"]
 " }}}
 
 " neoterm {{{
 let g:neoterm_default_mod = 'vertical'
 let g:neoterm_autoscroll = 1
 let g:neoterm_auto_repl_cmd = 0
-tnoremap jk <c-\><c-n>
-nnoremap <expr><leader>r g:myrepl_current_status == "none" ?
-    \ MyRepl() : ":TREPLSendLine\<cr>\<down>0"
-"nnoremap :: q:iT<space>
-vnoremap <expr><leader>r g:myrepl_current_status == "none" ?
-    \ MyRepl() : ":\<c-u>TREPLSendSelection\<cr>:T\<space>\<c-v>\<cr>\<cr>`>"
-autocmd Filetype javascript vnoremap <buffer> <expr><leader>r g:myrepl_current_status == "none" ?
-    \ MyRepl() : ":\<c-u>T\<space>.editor\<cr>:TREPLSendSelection\<cr>:T\<space>\<c-v>\<c-d>\<cr>`>"
-nnoremap <expr><leader>t MyRepl()
+
+nnoremap <expr> <leader>t <SID>MyRepl()
+nnoremap <expr><leader>w g:myrepl_current_status ==# "none" ? <SID>MyRepl() : ":Ttoggle\<cr>"
+nnoremap <expr> <leader>r g:myrepl_current_status ==# "none" ?
+  \ <SID>MyRepl() : ":TREPLSendLine\<cr>\<down>0"
+vnoremap <expr> <leader>r g:myrepl_current_status ==# "none" ?
+  \ <SID>MyRepl() : ":\<c-u>TREPLSendSelection\<cr>:T \<c-v>\<cr>\<cr>`>"
+augroup myrepl
+  autocmd!
+  autocmd Filetype javascript vnoremap <buffer><expr> <leader>r g:myrepl_current_status ==# "none" ?
+    \ <SID>MyRepl() : ":\<c-u>T .editor\<cr>:TREPLSendSelection\<cr>:T \<c-v>\<c-d>\<cr>`>"
+augroup END
+
 let g:myrepl_current_status = "none"
-function! MyRepl()
-    if g:myrepl_current_status == "none"
-        if &filetype == "python"
-            let g:myrepl_exit_command = ":T \<c-v>\<c-c>exit()\<cr>"
-            let g:myrepl_current_status = &filetype
-            return ":T ipython --no-autoindent\<cr>"
-        elseif &filetype == "javascriptreact" || &filetype == "javascript"
-            let g:myrepl_exit_command = ":T \<c-v>\<c-c>.exit\<cr>"
-            let g:myrepl_current_status = &filetype
-            return ":T node\<cr>"
-        else
-            let g:myrepl_exit_command = ":T \<c-v>\<c-a>\<c-v>\<c-k>exit\<cr>"
-            let g:myrepl_current_status = "shell"
-            return ":T echo 'using common repl!'\<cr>"
-        endif
+function! s:MyRepl()
+  if g:myrepl_current_status ==# "none"
+    " when NOT active
+    if &filetype ==# "python"
+      let g:myrepl_exit_command = ":T \<c-v>\<c-c>exit()\<cr>"
+      let g:myrepl_current_status = &filetype
+      return ":T ipython --no-autoindent\<cr>"
+    elseif &filetype ==# "javascriptreact" || &filetype ==# "javascript"
+      let g:myrepl_exit_command = ":T \<c-v>\<c-c>.exit\<cr>"
+      let g:myrepl_current_status = &filetype
+      return ":T node\<cr>"
     else
-        if g:myrepl_current_status == "shell"
-            let g:myrepl_exit_command = ":T \<c-v>\<c-a>\<c-v>\<c-k>exit\<cr>"
-            let g:myrepl_current_status = "none"
-            return g:myrepl_exit_command
-        else
-            let g:myrepl_current_status = "shell"
-            return g:myrepl_exit_command
-        endif
+      let g:myrepl_exit_command = ":T \<c-v>\<c-a>\<c-v>\<c-k>exit\<cr>"
+      let g:myrepl_current_status = "shell"
+      return ":T echo 'using common repl!'\<cr>"
     endif
+  else
+    " when active
+    if g:myrepl_current_status ==# "shell"
+      let g:myrepl_exit_command = ":T \<c-v>\<c-a>\<c-v>\<c-k>exit\<cr>"
+      let g:myrepl_current_status = "none"
+      return g:myrepl_exit_command
+    else
+      let g:myrepl_current_status = "shell"
+      return g:myrepl_exit_command
+    endif
+  endif
 endfunction
-nnoremap <expr><leader>w g:myrepl_current_status == "none" ? MyRepl() : ":Ttoggle\<cr>"
 " }}}
 
 " NERDTree {{{
 let g:NERDTreeCustomOpenArgs = {'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
-nnoremap <leader>n :NERDTreeFocus<cr>
+nnoremap <leader>e :NERDTreeFocus<cr>
 " }}}
 
+" vim-prettier {{{
+nnoremap <leader>f :PrettierAsync<cr>
+" }}}
