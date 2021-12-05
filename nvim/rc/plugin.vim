@@ -22,19 +22,18 @@ function! s:show_documentation()
 endfunction
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <c-n> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-n>"
-  nnoremap <silent><nowait><expr> <c-p> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-p>"
-  inoremap <silent><nowait><expr> <c-n> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <c-p> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <c-n> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-n>"
-  vnoremap <silent><nowait><expr> <c-p> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-p>"
+  nnoremap <silent><nowait><expr> <c-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-f>"
+  nnoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-b>"
+  inoremap <silent><nowait><expr> <c-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <c-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-f>"
+  vnoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-b>"
 endif
 
 command! UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 " }}}
 
 " indentLine {{{
-"autocmd Filetype markdown,json,tex IndentLinesDisable
 let g:indentLine_setConceal = 0
 " }}}
 

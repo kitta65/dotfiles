@@ -1,5 +1,5 @@
+" vim-plug {{{
 call plug#begin('~/.vim/plugged')
-" common
 Plug 'airblade/vim-gitgutter'
 Plug 'dr666m1/vim-bigquery'
 Plug 'dr666m1/vim-clipboard'
@@ -17,15 +17,16 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " js, ts
 Plug 'neoclide/vim-jsx-improve'
 call plug#end()
+" }}}
 
-"===== common =====
+" If you map `<leader>x` and `<localleader>x` differently, most recently defined mapping will work.
+let mapleader = "\<space>"
+let maplocalleader = "\<space>"
+
 syntax on
 syntax sync minlines=10000
 filetype plugin indent on
-let g:python3_host_prog = '$HOME/.pyenv/shims/python'
 
-
-"===== theme =====
 colorscheme molokai
 highlight Comment ctermfg=34
 
@@ -38,23 +39,7 @@ endfunction
 "PrettierAsync may be better but cannot be used with vim-bookmarks
 nnoremap <expr> <leader>f MyPrettier()
 
-
-
-"===== move cursor =====
-function! My0()
-    let myzero_next_col = strchars(matchstr(getline("."), "^\\s*"))+1
-    let myzero_current_col = col(".")
-    if 1 < myzero_next_col && myzero_next_col < myzero_current_col
-        return "^"
-    else
-        return "0"
-        "!... ignore mapping
-    endif
-endfunction
-nnoremap <expr>0 My0()
-vnoremap <expr>0 My0()
-
-for s:path in split(glob('~/.config/nvim/rc/*.vim'), "\n")
+for s:path in glob('~/.config/nvim/rc/*.vim', 0, 1)
   exe 'source ' . s:path
 endfor
 

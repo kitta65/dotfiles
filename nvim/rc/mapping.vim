@@ -1,10 +1,3 @@
-" leader {{{
-" If you map `<leader>x` and `<localleader>x` differently,
-" most recently defined mapping will work.
-let mapleader = "\<space>"
-let maplocalleader = "\<space>"
-" }}}
-
 " move {{{
 noremap! <c-j> <down>
 tnoremap <c-j> <down>
