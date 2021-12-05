@@ -19,9 +19,8 @@ Plug 'neoclide/vim-jsx-improve'
 call plug#end()
 
 "===== common =====
-let mapleader = "\<space>"
 syntax on
-autocmd Filetype rust,javascriptreact,bq,sql syntax sync minlines=10000
+syntax sync minlines=10000
 filetype plugin indent on
 let g:python3_host_prog = '$HOME/.pyenv/shims/python'
 
@@ -133,64 +132,6 @@ function My0()
 endfunction
 nnoremap <expr>0 My0()
 vnoremap <expr>0 My0()
-
-"===== quote & bracket =====
-inoremap ( )<left>(
-tnoremap ( )<left>(
-inoremap { }<left>{
-tnoremap { }<left>{
-inoremap " "<left>"
-tnoremap " "<left>"
-inoremap ' '<left>'
-tnoremap ' '<left>'
-inoremap [ ]<left>[
-tnoremap [ ]<left>[
-inoremap ` `<left>`
-tnoremap ` `<left>`
-inoremap < ><left><
-inoremap <<space> <<space>
-inoremap <= <=
-inoremap {<cr> {}<left><cr><esc><s-o>
-inoremap (<cr> ()<left><cr><esc><s-o>
-inoremap [<cr> []<left><cr><esc><s-o>
-command! -nargs=* MyQuote call MyQuote(<f-args>)
-function MyQuote(l, ...)
-    let r = get(a:000, 0, a:l)
-    execute "normal! `>"
-    execute "normal! a" . r
-    execute "normal! `<"
-    execute "normal! i" . a:l
-endfunction
-vnoremap "  :<c-u>call<space>MyQuote('"')<cr>
-vnoremap '  :<c-u>call<space>MyQuote("'")<cr>
-vnoremap {  :<c-u>call<space>MyQuote("{",     "}")<cr>
-vnoremap (  :<c-u>call<space>MyQuote("(",     ")")<cr>
-vnoremap [  :<c-u>call<space>MyQuote("[",     "]")<cr>
-vnoremap <  :<c-u>call<space>MyQuote("<",     ">")<cr>
-vnoremap /* :<c-u>call<space>MyQuote("/* ",   " */")<cr>
-vnoremap <! :<c-u>call<space>MyQuote("<!-- ", " -->")<cr>
-vnoremap q <esc>:MyQuote<space>
-
-"===== other =====
-inoremap <c-u> <esc>viw<s-u>ea
-nnoremap <leader><cr> <c-]>
-
-nnoremap / /\v
-noremap! jk <esc>
-
-" This function should be used in visual mode
-function InVisualBlockMode()
-    let mode = mode()
-    if mode == ""
-        return "1"
-    else
-        return "0"
-    endif
-endfunction
-vnoremap <expr>i InVisualBlockMode() ? "\<s-i>" : "i"
-vnoremap <expr>a InVisualBlockMode() ? "\<s-a>" : "a"
-" useful to exit from visual block mode.
-vnoremap v <esc>
 
 for s:path in split(glob('~/.config/nvim/rc/*.vim'), "\n")
   exe 'source ' . s:path
