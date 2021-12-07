@@ -1,6 +1,7 @@
 " vim-plug {{{
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
+Plug 'dr666m1/test-vim-csv'
 Plug 'dr666m1/vim-bigquery'
 Plug 'dr666m1/vim-clipboard'
 Plug 'itchyny/lightline.vim'
