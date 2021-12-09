@@ -38,7 +38,7 @@ command! UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
 " }}}
 
 " indentLine {{{
-let g:indentLine_fileTypeExclude = ["nerdtree", "json", "help"]
+let g:indentLine_fileTypeExclude = ["nerdtree", "json", "help", "markdown", "csv"]
 " }}}
 
 " neoterm {{{

@@ -10,6 +10,8 @@ vnoremap <s-g> <s-g>g_
 nnoremap gg gg0
 vnoremap gg gg0
 vnoremap $ g_
+nnoremap <expr> 0 matchend(getline("."), '\v\s*') + 1 <  col(".") ? "^" : "0"
+vnoremap <expr> 0 matchend(getline("."), '\v\s*') + 1 <  col(".") ? "^" : "0"
 " }}}
 
 " tab {{{
