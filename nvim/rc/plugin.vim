@@ -10,7 +10,11 @@ let g:coc_snippet_prev = '<s-tab>'
 " vmap <tab> <Plug>(coc-snippets-select)
 
 " See https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources .
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+inoremap <expr> <cr> pumvisible()
+  \ ? complete_info()['selected'] >=# 0
+    \ ? "\<c-y>"
+    \ : "\<c-y>\<cr>"
+  \ : "\<c-g>u\<cr>"
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()

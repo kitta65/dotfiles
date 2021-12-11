@@ -27,6 +27,7 @@ nnoremap <c-l> <c-w>l
 " }}}
 
 " yank, put {{{
+vnoremap y ygv<esc>
 vnoremap <leader>y <esc>:ClipboardYank<cr>
 nnoremap <leader>p :ClipboardPut<cr>
 " }}}
