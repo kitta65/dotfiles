@@ -98,6 +98,11 @@ let g:NERDTreeCustomOpenArgs = {'file': {'reuse': 'all', 'where': 't'}, 'dir': {
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 nnoremap <leader>e :NERDTreeFocus<cr>
+augroup nerdtree
+  autocmd!
+  " NOTE <nowait> is added to the default mapping.
+  autocmd FileType nerdtree nnoremap <buffer><nowait> m :call nerdtree#ui_glue#invokeKeyMap("m")<cr>
+augroup END
 " }}}
 
 " vim-prettier {{{
