@@ -48,9 +48,12 @@ inoremap ' '<left>'
 tnoremap ' '<left>'
 inoremap ` `<left>`
 tnoremap ` `<left>`
+inoremap /* */<left><left>/*
+tnoremap /* */<left><left>/*
 inoremap (<cr> ()<left><cr><esc><s-o>
 inoremap {<cr> {}<left><cr><esc><s-o>
 inoremap [<cr> []<left><cr><esc><s-o>
+inoremap /*<cr> /*<cr><space>*/<esc><s-o><space>*
 function! s:Quote(left, ...)
   let right = get(a:000, 0, a:left)
   execute "normal! `>"
