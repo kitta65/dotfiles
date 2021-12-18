@@ -22,3 +22,12 @@ augroup go
   autocmd FileType go setlocal noexpandtab
 augroup END
 " }}}
+
+" markdown {{{
+augroup markdown
+  autocmd!
+  autocmd FileType markdown setlocal conceallevel=1
+  " overwrite markdwonUrl
+  autocmd FileType markdown syntax match markdownUrl "\S\+" nextgroup=markdownUrlTitle skipwhite contained conceal cchar=∞
+augroup END
+" }}}
