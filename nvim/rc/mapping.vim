@@ -1,7 +1,7 @@
 " move {{{
-noremap! <c-j> <down>
+noremap! <expr> <c-j> pumvisible() ? "\<c-e><down>" : "\<down>"
 tnoremap <c-j> <down>
-noremap! <c-k> <up>
+noremap! <expr> <c-k> pumvisible() ? "\<c-e><up>" : "\<up>"
 tnoremap <c-k> <up>
 noremap! <c-l> <right>
 tnoremap <c-l> <right>
