@@ -2,7 +2,8 @@
 cd $(dirname $0)
 
 # zsh
-echo "source $(pwd)/.zshrc" >> $HOME/.zshrc
+sed --in-place "\%# Added by dotfiles/init.sh%d" $HOME/.zshrc
+echo "source $(pwd)/.zshrc # Added by dotfiles/init.sh" >> $HOME/.zshrc
 
 # Git
 mkdir -p $HOME/.config
