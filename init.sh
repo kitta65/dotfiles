@@ -1,9 +1,20 @@
 #!/bin/bash
+set -o errexit
 cd $(dirname $0)
 
+dotfile_comment='# Added by dotfiles/init.sh'
+
+function initialize_file() {
+  if [ "$(uname)" == 'Darwin' ]; then
+    gsed --in-place "\%${dotfile_comment}%d" $1
+  else
+    sed --in-place "\%${dotfile_comment}%d" $1
+  fi
+}
+
 # zsh
-sed --in-place "\%# Added by dotfiles/init.sh%d" $HOME/.zshrc
-echo "source $(pwd)/.zshrc # Added by dotfiles/init.sh" >> $HOME/.zshrc
+initialize_file $HOME/.zshrc
+echo "source $(pwd)/.zshrc ${dotfile_comment}" >> $HOME/.zshrc
 
 # Git
 mkdir -p $HOME/.config
