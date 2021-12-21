@@ -1,9 +1,18 @@
 snippet init
 #!/bin/bash
+set -o errexit
 cd $(dirname \$0)
 ${0}
 endsnippet
 
 snippet exportPath
 export PATH=\$PATH:${0}
+endsnippet
+
+snippet if
+if true; then
+	${0}
+else
+	:
+fi
 endsnippet
