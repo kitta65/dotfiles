@@ -10,9 +10,18 @@ export PATH=\$PATH:${0}
 endsnippet
 
 snippet if
-if true; then
+if ${1:true}; then
 	${0}
 else
 	:
 fi
+endsnippet
+
+# See https://stackoverflow.com/questions/592620/how-can-i-check-if-a-program-exists-from-a-bash-script
+snippet testExecutable
+[ -x "$(command -v ${1:command})" ]${0}
+endsnippet
+
+snippet testMac
+[ "$(uname)" == 'Darwin' ]${0}
 endsnippet
