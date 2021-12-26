@@ -1,3 +1,10 @@
+" common {{{
+augroup common
+  autocmd!
+  autocmd FileType * syntax sync minlines=10000
+augroup END
+" }}}
+
 " bigquery {{{
 augroup bigquery
   autocmd!

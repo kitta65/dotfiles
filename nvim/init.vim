@@ -24,7 +24,6 @@ let mapleader = "\<space>"
 let maplocalleader = "\<space>"
 
 syntax on
-syntax sync minlines=10000
 filetype plugin indent on
 
 colorscheme molokai
