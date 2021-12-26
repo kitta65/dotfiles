@@ -62,7 +62,7 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
     # It is not a good idea to run `powershell.exe` every time.
     # It will take a lot of time.
     if ! [ -v WINUSER ]; then
-      export WINUSER=$(powershell.exe '$env:UserName' | tr -d "")
+      export WINUSER=$(powershell.exe '$env:UserName' | tr -d "\r")
     fi
   }
 
@@ -70,8 +70,4 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
 fi
 
 # other
-if [ "$(uname)" == 'Darwin' ]; then
-  :
-else
-  alias yyyymmdd='date "+%Y%m%d"'
-fi
+alias yyyymmdd='date "+%Y%m%d"'
