@@ -15,8 +15,8 @@ vnoremap <expr> 0 matchend(getline("."), '\v\s*') + 1 <  col(".") ? "^" : "0"
 " }}}
 
 " tab {{{
-nnoremap <c-]> :tabn<cr>
-nnoremap <c-[> :tabp<cr>
+nnoremap <c-n> :tabn<cr>
+nnoremap <c-p> :tabp<cr>
 " }}}
 
 " window {{{
