@@ -40,7 +40,7 @@ alias rstudio3='\
     -p 8787:8787 \
     -v $HOME/.renv:/home/rstudio/.local/share/renv \
     -v $(pwd):/home/rstudio/project \
-    rocker/rstudio:3.6.3'
+    rocker/tidyverse:3.6.3'
 alias rstudio4='\
   docker container run \
     --rm \
@@ -49,7 +49,7 @@ alias rstudio4='\
     -p 8787:8787 \
     -v $HOME/.renv:/renv \
     -v $(pwd):/home/rstudio/project \
-    rocker/rstudio:4.0.0'
+    rocker/tidyverse:4.0.0'
 
 # wsl
 # See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
