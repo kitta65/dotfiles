@@ -36,6 +36,8 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-b>"
 endif
 
+nmap <leader>n <Plug>(coc-diagnostic-next)
+nmap <leader><s-n> <Plug>(coc-diagnostic-prev)
 nnoremap <leader>s :CocCommand snippets.openSnippetFiles<cr>
 inoremap <silent><expr> <c-space> coc#refresh()
 command! UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
