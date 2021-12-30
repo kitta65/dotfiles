@@ -28,6 +28,7 @@ filetype plugin indent on
 
 colorscheme molokai
 highlight Comment ctermfg=34
+highlight Pmenu ctermfg=245
 
 for s:path in glob('~/.config/nvim/rc/*.vim', 0, 1)
   exe 'source ' . s:path
