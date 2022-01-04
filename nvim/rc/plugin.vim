@@ -40,7 +40,9 @@ nmap <leader>n <Plug>(coc-diagnostic-next)
 nmap <leader><s-n> <Plug>(coc-diagnostic-prev)
 nnoremap <leader>s :CocCommand snippets.openSnippetFiles<cr>
 inoremap <silent><expr> <c-space> coc#refresh()
-command! UpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
+command! BQUpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
+command! BQClearCache call CocRequestAsync("bigquery", "bq/clearCache")
+command! BQDryRun call CocRequestAsync("bigquery", "bq/dryRun", {"uri": "file://" . expand("%:p")})
 " }}}
 
 " indentLine {{{
