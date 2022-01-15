@@ -1,27 +1,68 @@
 snippet init
 #!/bin/bash
-set -o errexit
+set -euo pipefail
 cd $(dirname \$0)
 ${0}
+endsnippet
+
+snippet function
+${1:my_func}() {
+	${0}
+}
 endsnippet
 
 snippet exportPath
 export PATH=\$PATH:${0}
 endsnippet
 
+snippet here
+<< END
+${0}
+END
+endsnippet
+
+# control flow
 snippet if
 if ${1:true}; then
 	${0}
+elif true; then
+	:
 else
 	:
 fi
 endsnippet
 
+snippet for
+for i in ${1:"\$@"}; do
+	${0}
+done
+endsnippet
+
+snippet while
+while ${1:false}; do
+	${0}
+done
+endsnippet
+
+snippet case
+case ${1:"\$\{expr\}"} in
+	${2})
+		${0}
+		;;
+	*) echo 'Unexpected expr!' ;;
+esac
+endsnippet
+
+# test
 # See https://stackoverflow.com/questions/592620/how-can-i-check-if-a-program-exists-from-a-bash-script
 snippet testExecutable
-[ -x "$(command -v ${1:command})" ]${0}
+[[ -x "$(command -v ${1:command})" ]]${0}
 endsnippet
 
 snippet testMac
-[ "$(uname)" = 'Darwin' ]${0}
+[[ "$(uname)" = 'Darwin' ]]${0}
+endsnippet
+
+snippet testWSL
+[[ -n "$WSL_DISTRO_NAME" ]]${0}
 endsnippet
