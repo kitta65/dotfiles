@@ -46,7 +46,7 @@ command! BQDryRun call CocRequestAsync("bigquery", "bq/dryRun", {"uri": "file://
 " }}}
 
 " indentLine {{{
-let g:indentLine_fileTypeExclude = ["nerdtree", "json", "help", "markdown", "csv"]
+let g:indentLine_fileTypeExclude = ["nerdtree", "json", "help", "markdown", "csv", "dockerfile"]
 " }}}
 
 " neoterm {{{
