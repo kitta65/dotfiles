@@ -74,5 +74,5 @@ nnoremap / /\v
 noremap! jk <esc>
 tnoremap jk <c-\><c-n>
 vnoremap v <esc>
-inoremap <c-g><c-u> <esc>viW<s-u>Ea
+inoremap <c-g><c-u> <esc>viw<s-u>ea
 " }}}
