@@ -6,12 +6,18 @@ elif [ -x "$(command -v bat)" ]; then
 fi
 
 # docker
-alias dca='docker container attach'
-alias dce='docker container exec -it'
-alias dcl='docker container ls'
-alias dcr='docker container run -it --rm'
-alias dib='docker image build'
-alias dil='docker image ls'
+alias dcattach='docker container attach'
+alias dcexec='docker container exec -it'
+alias dcls='docker container ls -a'
+alias dcprune='docker container prune -f'
+alias dcrun='docker container run -it --rm'
+alias dcstop='docker container stop'
+
+alias dibuild='docker image build'
+alias dils='docker image ls'
+
+alias dninspect='docker network inspect'
+alias dnls='docker network ls'
 
 # exa
 if [ -x "$(command -v exa)" ]; then
