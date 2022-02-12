@@ -34,6 +34,7 @@ augroup END
 augroup markdown
   autocmd!
   autocmd FileType markdown setlocal conceallevel=1
+  autocmd FileType markdown setlocal concealcursor=
   " overwrite markdwonUrl
   autocmd FileType markdown syntax match markdownUrl "\S\+" nextgroup=markdownUrlTitle skipwhite contained conceal cchar=∞
 augroup END

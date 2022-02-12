@@ -98,7 +98,7 @@ endfunction
 " }}}
 
 " NERDTree {{{
-let g:NERDTreeCustomOpenArgs = {'file': {'reuse': 'all', 'where': 'v'}, 'dir': {}}
+let g:NERDTreeCustomOpenArgs = {'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 nnoremap <leader>e :NERDTreeFocus<cr>
