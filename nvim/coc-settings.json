@@ -16,6 +16,15 @@
           }
         }
       }
+    },
+    // https://github.com/golang/tools/blob/master/gopls/doc/vim.md
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   }
 }
