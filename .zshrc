@@ -44,7 +44,7 @@ alias rstudio='\
     --rm \
     -e DISABLE_AUTH=true \
     -e RENV_PATHS_CACHE=/renv \
-    -p 8787:8787 \
+    -p 127.0.0.1:8787:8787 \
     -v $HOME/.renv:/renv \
     -v $(pwd):/home/rstudio/project \
     -v $DOTFILES_DIR/rstudio-prefs.json:/home/rstudio/.config/rstudio/rstudio-prefs.json \
