@@ -15,13 +15,15 @@ function initialize_file() {
 # zsh
 initialize_file $HOME/.zshrc
 echo "source $(pwd)/.zshrc ${dotfile_comment}" >> $HOME/.zshrc
+echo "export DOTFILES_DIR=$(pwd) ${dotfile_comment}" >> $HOME/.zshrc
 
 # Git
-mkdir -p $HOME/.config
+mkdir -p $HOME/.config/git
 rm -r $HOME/.config/git &> /dev/null
 ln -s $(pwd)/git $HOME/.config/git
 
 # Neovim
+mkdir -p $HOME/.config/nvim
 rm -r $HOME/.config/nvim &> /dev/null
 rm -r $HOME/.config/coc/ultisnips &> /dev/null
 ln -s $(pwd)/nvim $HOME/.config/nvim

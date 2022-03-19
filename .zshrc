@@ -39,15 +39,7 @@ else
 fi
 
 # R
-alias rstudio3='\
-  docker container run \
-    --rm \
-    -e DISABLE_AUTH=true \
-    -p 8787:8787 \
-    -v $HOME/.renv:/home/rstudio/.local/share/renv \
-    -v $(pwd):/home/rstudio/project \
-    rocker/tidyverse:3.6.3'
-alias rstudio4='\
+alias rstudio='\
   docker container run \
     --rm \
     -e DISABLE_AUTH=true \
@@ -55,6 +47,7 @@ alias rstudio4='\
     -p 8787:8787 \
     -v $HOME/.renv:/renv \
     -v $(pwd):/home/rstudio/project \
+    -v $DOTFILES_DIR/rstudio-prefs.json:/home/rstudio/.config/rstudio/rstudio-prefs.json \
     rocker/verse:4.1.2'
 
 # wsl
