@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o errexit
+set -euo pipefail
 cd $(dirname $0)
 
 dotfile_comment='# Added by dotfiles/init.sh'
@@ -32,3 +32,14 @@ ln -s $(pwd)/nvim/snips $HOME/.config/coc/ultisnips
 # tmux
 rm $HOME/.tmux.conf &> /dev/null
 ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
+
+# wsl
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  winuser=$(/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe '$env:UserName' | tr -d "\r")
+  if [[ -w /etc/wsl.conf ]]; then
+    cp $(pwd)/wsl/wsl.conf /etc/wsl.conf
+  else
+    echo "Skip replacing /etc/wsl.conf because you do not have write permission."
+  fi
+  cp $(pwd)/wsl/.wslconfig /mnt/c/Users/$winuser/.wslconfig
+fi
