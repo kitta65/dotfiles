@@ -55,7 +55,7 @@ alias rstudio4='\
     -p 8787:8787 \
     -v $HOME/.renv:/renv \
     -v $(pwd):/home/rstudio/project \
-    rocker/tidyverse:4.1.2'
+    rocker/verse:4.1.2'
 
 # wsl
 # See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
