@@ -35,11 +35,11 @@ ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
 
 # wsl
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
-  winuser=$(/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe '$env:UserName' | tr -d "\r")
   if [[ -w /etc/wsl.conf ]]; then
     cp $(pwd)/wsl/wsl.conf /etc/wsl.conf
   else
     echo "Skip replacing /etc/wsl.conf because you do not have write permission."
   fi
-  cp $(pwd)/wsl/.wslconfig /mnt/c/Users/$winuser/.wslconfig
+  # See https://superuser.com/questions/1271205/how-to-get-the-host-user-home-directory-in-wsl-bash
+  cp $(pwd)/wsl/.wslconfig $(wslpath "$(wslvar USERPROFILE)")/.wslconfig
 fi

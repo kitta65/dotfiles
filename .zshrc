@@ -55,17 +55,16 @@ alias rstudio='\
 if [ -n "$WSL_DISTRO_NAME" ]; then
   # in the case of `appendWindowsPath = false`
   export PATH=$PATH:/mnt/c/WINDOWS/system32
-  export PATH=$PATH:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0
 
-  function setWinUser() {
-    # It is not a good idea to run `powershell.exe` every time.
+  function setWinUserProfile() {
+    # It is not a good idea to run `wslvar` every time.
     # It will take a lot of time.
-    if ! [ -v WINUSER ]; then
-      export WINUSER=$(powershell.exe '$env:UserName' | tr -d "\r")
+    if ! [ -v WINUSER_PROFILE ]; then
+      export WINUSER_PROFILE=$(wslpath "$(wslvar USERPROFILE)")
     fi
   }
 
-  alias code='setWinUser;/mnt/c/Users/$WINUSER/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+  alias code='setWinUserProfile;$WINUSER_PROFILE/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
 fi
 
 # other
