@@ -34,7 +34,7 @@ rm $HOME/.tmux.conf &> /dev/null
 ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
 
 # wsl
-if [[ -n "$WSL_DISTRO_NAME" ]]; then
+if [[ -v WSL_DISTRO_NAME ]]; then
   if [[ -w /etc/wsl.conf ]]; then
     cp $(pwd)/wsl/wsl.conf /etc/wsl.conf
   else
