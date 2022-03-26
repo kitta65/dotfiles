@@ -54,7 +54,8 @@ alias rstudio='\
 # See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
 if [ -n "$WSL_DISTRO_NAME" ]; then
   # in the case of `appendWindowsPath = false`
-  export PATH=$PATH:/mnt/c/WINDOWS/system32
+  export PATH=$PATH:/mnt/c/WINDOWS/System32
+  export PATH=$PATH:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0
 
   function setWinUserProfile() {
     # It is not a good idea to run `wslvar` every time.
