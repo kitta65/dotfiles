@@ -11,7 +11,7 @@ ${1:my_func}() {
 }
 endsnippet
 
-snippet exportPath
+snippet export_path
 export PATH=\$PATH:${0}
 endsnippet
 
@@ -55,14 +55,14 @@ endsnippet
 
 # test
 # See https://stackoverflow.com/questions/592620/how-can-i-check-if-a-program-exists-from-a-bash-script
-snippet testExecutable
+snippet test_executable
 [[ -x "$(command -v ${1:command})" ]]${0}
 endsnippet
 
-snippet testMac
+snippet test_mac
 [[ "$(uname)" = 'Darwin' ]]${0}
 endsnippet
 
-snippet testWSL
-[[ -n "$WSL_DISTRO_NAME" ]]${0}
+snippet test_wsl
+[[ -v WSL_DISTRO_NAME ]]${0}
 endsnippet

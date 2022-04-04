@@ -29,3 +29,21 @@ endsnippet
 snippet range
 range between ${1:unbounded preceding} and ${2:unbounded following}
 endsnippet
+
+snippet create_function
+create ${1:temp }function ${2:ident}(
+	$0
+)
+as (1)
+;
+endsnippet
+
+snippet create_function_js
+create ${1:temp }function ${2:ident}(
+	$0
+)
+returns int64
+language js
+as r"""return 1"""
+;
+endsnippet
