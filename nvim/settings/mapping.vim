@@ -19,13 +19,6 @@ nnoremap <c-n> :tabn<cr>
 nnoremap <c-p> :tabp<cr>
 " }}}
 
-" window {{{
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-" }}}
-
 " yank, put {{{
 vnoremap y ygv<esc>
 vnoremap <leader>y <esc>:ClipboardYank<cr>
