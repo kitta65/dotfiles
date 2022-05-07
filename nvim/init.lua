@@ -1,4 +1,4 @@
-" vim-plug {{{
+vim.cmd([[
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'dr666m1/vim-bigquery'
@@ -17,7 +17,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " js, ts
 Plug 'neoclide/vim-jsx-improve'
 call plug#end()
-" }}}
 
 " If you map `<leader>x` and `<localleader>x` differently, most recently defined mapping will work.
 let mapleader = "\<space>"
@@ -33,4 +32,4 @@ highlight Pmenu ctermfg=245
 for s:path in glob('~/.config/nvim/settings/*.vim', 0, 1)
   exe 'source ' . s:path
 endfor
-
+]])
