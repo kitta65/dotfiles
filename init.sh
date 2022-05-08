@@ -18,19 +18,19 @@ echo "source $(pwd)/.zshrc ${dotfile_comment}" >> $HOME/.zshrc
 echo "export DOTFILES_DIR=$(pwd) ${dotfile_comment}" >> $HOME/.zshrc
 
 # Git
-mkdir -p $HOME/.config/git
-rm -r $HOME/.config/git &> /dev/null
+mkdir -p $HOME/.config
+rm $HOME/.config/git 2> /dev/null || true
 ln -s $(pwd)/git $HOME/.config/git
 
 # Neovim
-mkdir -p $HOME/.config/nvim
-rm -r $HOME/.config/nvim &> /dev/null
-rm -r $HOME/.config/coc/ultisnips &> /dev/null
+mkdir -p $HOME/.config/coc
+rm $HOME/.config/nvim 2> /dev/null || true
+rm $HOME/.config/coc/ultisnips 2> /dev/null || true
 ln -s $(pwd)/nvim $HOME/.config/nvim
 ln -s $(pwd)/nvim/snips $HOME/.config/coc/ultisnips
 
 # tmux
-rm $HOME/.tmux.conf &> /dev/null
+rm $HOME/.tmux.conf 2> /dev/null || true
 ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
 
 # wsl
