@@ -1,3 +1,6 @@
+bindkey -e
+bindkey '^]' forward-word # complete one word
+
 # bat
 if [ -x "$(command -v batcat)" ]; then
   alias cat='batcat'
@@ -49,6 +52,10 @@ alias rstudio='\
     -v $(pwd):/home/rstudio/project \
     -v $DOTFILES_DIR/rstudio-prefs.json:/home/rstudio/.config/rstudio/rstudio-prefs.json \
     rocker/verse:4.1.2'
+
+# pure (If you don't enable pure, this section is ignored)
+zstyle :prompt:pure:path color cyan
+zstyle :prompt:pure:prompt:success color green
 
 # wsl
 # See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
