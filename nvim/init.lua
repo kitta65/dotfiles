@@ -33,3 +33,5 @@ for s:path in glob('~/.config/nvim/settings/*.vim', 0, 1)
   exe 'source ' . s:path
 endfor
 ]])
+
+require('options')
