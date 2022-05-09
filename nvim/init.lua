@@ -40,6 +40,7 @@ for s:path in glob('~/.config/nvim/settings/*.vim', 0, 1)
 endfor
 ]])
 
+vim.g.python3_host_prog = "$HOME/.pyenv/shims/python"
 require('option')
 require('autocmd')
 require('mapping')
