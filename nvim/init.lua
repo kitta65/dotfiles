@@ -1,3 +1,12 @@
+local function key(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+-- If you map `<leader>x` and `<localleader>x` differently,
+-- most recently defined mapping will work.
+vim.g.mapleader = key'<space>'
+vim.g.maplocalleader = key'<space>'
+
 vim.cmd([[
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
@@ -18,9 +27,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'neoclide/vim-jsx-improve'
 call plug#end()
 
-" If you map `<leader>x` and `<localleader>x` differently, most recently defined mapping will work.
-let mapleader = "\<space>"
-let maplocalleader = "\<space>"
 
 syntax on
 filetype plugin indent on
@@ -34,4 +40,5 @@ for s:path in glob('~/.config/nvim/settings/*.vim', 0, 1)
 endfor
 ]])
 
-require('options')
+require('option')
+require('mapping')
