@@ -41,4 +41,5 @@ endfor
 ]])
 
 require('option')
+require('autocmd')
 require('mapping')

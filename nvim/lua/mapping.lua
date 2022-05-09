@@ -12,9 +12,9 @@ vim.keymap.set('x', '<leader>y', '<esc>:ClipboardYank<cr>')
 vim.keymap.set('n', '<leader>p', ':ClipboardPut<cr>')
 
 -- other
-vim.keymap.set('n', '/', '/\\v')
+vim.keymap.set('n', '/', [[/\v]])
 vim.keymap.set('i', 'jk', '<esc>')
-vim.keymap.set('t', 'jk', '<c-\\><c-n>')
+vim.keymap.set('t', 'jk', [[<c-\><c-n>]])
 vim.keymap.set('x', 'v', '<esc>')
 vim.keymap.set('i', '<c-g><c-u>', '<esc>viw<s-u>ea')
 
