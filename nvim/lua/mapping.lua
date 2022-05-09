@@ -1,6 +1,4 @@
-local function key(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+local f = require('myfunc')
 
 -- tab
 vim.keymap.set('n', '<c-n>', ':tabn<cr>')
