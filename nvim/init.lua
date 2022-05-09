@@ -17,7 +17,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production'}
-Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'yggdroot/indentLine'
 " python
@@ -30,10 +29,6 @@ call plug#end()
 vim.cmd([[
 syntax on
 filetype plugin indent on
-
-colorscheme molokai
-highlight Comment ctermfg=34
-highlight Pmenu ctermfg=245
 ]])
 
 vim.cmd([[
