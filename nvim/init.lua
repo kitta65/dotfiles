@@ -43,5 +43,8 @@ endfor
 ]])
 
 for _, file in ipairs(vim.fn.glob('~/.config/nvim/lua/*.lua', 0, 1)) do
-  require(vim.fn.fnamemodify(file, ':t:r'))
+  local ok, _ = pcall(require, vim.fn.fnamemodify(file, ':t:r'))
+  if not ok then
+    print(string.format("Cannot execute %s", file))
+  end
 end
