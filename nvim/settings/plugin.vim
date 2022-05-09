@@ -2,49 +2,6 @@
 let g:bookmark_auto_save = 0
 " }}}
 
-" coc {{{
-" See https://github.com/neoclide/coc-snippets .
-inoremap <silent><expr> <tab> coc#expandableOrJumpable() ? "\<c-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<cr>" : "\<tab>"
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<s-tab>'
-" vmap <tab> <Plug>(coc-snippets-select)
-
-" See https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources .
-inoremap <expr> <cr> pumvisible()
-  \ ? complete_info()['selected'] >=# 0
-    \ ? "\<c-y>"
-    \ : "\<c-y>\<cr>"
-  \ : "\<c-g>u\<cr>"
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <c-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-f>"
-  nnoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-b>"
-  inoremap <silent><nowait><expr> <c-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <c-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-f>"
-  vnoremap <silent><nowait><expr> <c-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-b>"
-endif
-
-nmap <leader>n <Plug>(coc-diagnostic-next)
-nmap <leader><s-n> <Plug>(coc-diagnostic-prev)
-nnoremap <leader>s :CocCommand snippets.openSnippetFiles<cr>
-inoremap <silent><expr> <c-space> coc#refresh()
-command! BQUpdateCache call CocRequestAsync("bigquery", "bq/updateCache")
-command! BQClearCache call CocRequestAsync("bigquery", "bq/clearCache")
-command! BQDryRun call CocRequestAsync("bigquery", "bq/dryRun", {"uri": "file://" . expand("%:p")})
-" }}}
-
 " indentLine {{{
 let g:indentLine_fileTypeExclude = ["nerdtree", "json", "help", "markdown", "csv", "dockerfile"]
 " }}}

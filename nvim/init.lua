@@ -4,7 +4,6 @@ local f = require('myfunc')
 -- most recently defined mapping will work.
 vim.g.mapleader = f.key'<space>'
 vim.g.maplocalleader = f.key'<space>'
-vim.g.python3_host_prog = "$HOME/.pyenv/shims/python"
 
 vim.cmd([[
 call plug#begin('~/.vim/plugged')
@@ -14,7 +13,6 @@ Plug 'dr666m1/vim-clipboard'
 Plug 'itchyny/lightline.vim'
 Plug 'kassio/neoterm'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production'}
 Plug 'tpope/vim-fugitive'

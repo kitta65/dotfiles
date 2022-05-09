@@ -18,3 +18,5 @@ vim.opt.listchars = {
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'} -- recommended by nvim-cmp
