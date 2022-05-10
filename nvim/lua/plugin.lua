@@ -4,21 +4,57 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   PackerBootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
--- auto complile
-local group = vim.api.nvim_create_augroup("packer", {})
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-  group = group,
-  pattern = {'plugin.lua'},
-  command = 'source <afile> | PackerCompile'
-})
-
 return require('packer').startup(function(use) -- `use` satisfies language server
   use 'wbthomason/packer.nvim'
+
+  use {
+    'chentau/marks.nvim',
+    config = function ()
+      require'marks'.setup {
+        default_mappings = false,
+        bookmark_0 = {
+          sign = '*',
+        },
+        mappings = {
+          set_bookmark0 = 'mm',
+          delete_bookmark = 'md',
+          next_bookmark0 = 'm]',
+          prev_bookmark0 = 'm[',
+        }
+      }
+    end
+  }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function ()
+      vim.g.nvim_tree_show_icons = {
+        folders = 0,
+        files = 0,
+        git = 0,
+        folder_arrows = 0,
+      }
+      require'nvim-tree'.setup{}
+      vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
+    end
+  }
 
   use {
     "EdenEast/nightfox.nvim",
     config = function()
       vim.cmd("colorscheme terafox")
+    end,
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'},
+    config = function ()
+      require'lualine'.setup{options = {
+        icons_enabled = false,
+        component_separators = {left = '', right = ''},
+        section_separators = {left = '', right = ''},
+      }}
     end
   }
 
@@ -96,16 +132,70 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
   }
 
   use "williamboman/nvim-lsp-installer"
+
   use {
     "neovim/nvim-lspconfig",
     after = "nvim-lsp-installer",
     config = function()
       require("nvim-lsp-installer").setup {}
-      vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-      vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-      vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
     end
   }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+      vim.keymap.set('n', '<leader>b', ':Gitsigns toggle_current_line_blame<cr>')
+      vim.cmd([[highlight link GitSignsCurrentLineBlame Comment]])
+    end
+  }
+
+  use 'dr666m1/vim-clipboard'
+
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function ()
+      require("indent_blankline").setup {
+        show_end_of_line = true,
+      }
+    end
+  }
+
+  use {
+    "dr666m1/toggleterm.nvim", branch = 'fix/shade_color', config = function()
+      require("toggleterm").setup{
+        open_mapping = [[<c-\>]],
+      }
+    end,
+    as = 'toggleterm.fork',
+    after='nightfox.nvim',
+  }
+  use {
+    "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+      require("toggleterm").setup{
+        open_mapping = [[<c-\>]],
+      }
+    end,
+    disable = true,
+    after='nightfox.nvim',
+  }
+
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function ()
+      require"null-ls".setup({
+        sources = {
+          require"null-ls".builtins.formatting.prettier.with({
+            prefer_local = "node_modules/.bin",
+          }),
+        },
+      })
+    end,
+    requires = {
+      {"nvim-lua/plenary.nvim"}
+    }
+  }
+
   if PackerBootstrap then
     require('packer').sync()
   end

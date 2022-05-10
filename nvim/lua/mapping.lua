@@ -9,13 +9,6 @@ vim.keymap.set('x', 'y', 'ygv<esc>')
 vim.keymap.set('x', '<leader>y', '<esc>:ClipboardYank<cr>')
 vim.keymap.set('n', '<leader>p', ':ClipboardPut<cr>')
 
--- other
-vim.keymap.set('n', '/', [[/\v]])
-vim.keymap.set('i', 'jk', '<esc>')
-vim.keymap.set('t', 'jk', [[<c-\><c-n>]])
-vim.keymap.set('x', 'v', '<esc>')
-vim.keymap.set('i', '<c-g><c-u>', '<esc>viw<s-u>ea')
-
 -- move
 vim.keymap.set(
   {'i', 'c', 't'},
@@ -44,6 +37,12 @@ vim.keymap.set(
   end,
   {expr = true}
 )
+
+-- lsp
+vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<cr>')
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', 'd[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+vim.keymap.set('n', 'd]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
 -- quote
 vim.keymap.set({'i', 't'}, '(', ')<left>(')
@@ -76,3 +75,11 @@ vnoremap <  :<c-u>call <SID>Quote("<",     ">")<cr>
 vnoremap /* :<c-u>call <SID>Quote("/* ",   " */")<cr>
 vnoremap <! :<c-u>call <SID>Quote("<!-- ", " -->")<cr>
 ]])
+
+-- other
+vim.keymap.set('n', '/', [[/\v]])
+vim.keymap.set('i', 'jk', '<esc>')
+vim.keymap.set('t', 'jk', [[<c-\><c-n>]])
+vim.keymap.set('t', '<c-w>', [[<c-\><c-n><c-w>]])
+vim.keymap.set('x', 'v', '<esc>')
+vim.keymap.set('i', '<c-g><c-u>', '<esc>viw<s-u>ea')
