@@ -105,10 +105,28 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
 
       local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
       local lspconfig = require'lspconfig'
+      -- See :h lspconfig-adding-servers
+      local configs = require'lspconfig.configs'
+      if not configs.bqls then
+        configs.bqls = {
+          default_config = {
+            cmd = {'bq-language-server', '--stdio'},
+            filetypes = {'bigquery'},
+            root_dir = function(fname) return
+              lspconfig.util.find_git_ancestor(fname)
+              or vim.fn.fnamemodify(fname, ':h')
+            end,
+            settings = {bqExtensionVSCode = {
+              diagnostic = {forVSCode = false}
+            }},
+          },
+        }
+      end
       local servers = {
         "pyright",
         "tsserver",
-        "sumneko_lua"
+        "sumneko_lua",
+        "bqls",
       }
       for _, server in ipairs(servers) do
         if server == "sumneko_lua" then
@@ -151,6 +169,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
   }
 
   use 'dr666m1/vim-clipboard'
+
+  use 'dr666m1/vim-bigquery'
 
   use {
     'lukas-reineke/indent-blankline.nvim',

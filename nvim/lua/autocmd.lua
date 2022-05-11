@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 group = vim.api.nvim_create_augroup("bigquery", {})
 cmds = {
   [[setlocal foldmethod=indent]],
-  [[nnoremap <buffer> <leader>f :call CocAction('format')<cr>]]
 }
 for _, cmd in ipairs(cmds) do
   vim.api.nvim_create_autocmd({"FileType"}, {
