@@ -1,3 +1,4 @@
+setopt histignorealldups
 bindkey -e
 bindkey '^]' forward-word # complete one word
 
@@ -53,9 +54,22 @@ alias rstudio='\
     -v $DOTFILES_DIR/rstudio-prefs.json:/home/rstudio/.config/rstudio/rstudio-prefs.json \
     rocker/verse:4.1.2'
 
-# pure (If you don't enable pure, this section is ignored)
+# pure
+if ! [[ -d ~/.zsh/pure ]]; then
+  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+fi
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
+
 zstyle :prompt:pure:path color cyan
 zstyle :prompt:pure:prompt:success color green
+
+# zsh-autosuggestions
+if ! [[ -d ~/.zsh/zsh-autosuggestions ]]; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+fi
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # wsl
 # See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
