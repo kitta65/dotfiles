@@ -10,12 +10,6 @@ syntax on
 filetype plugin indent on
 ]])
 
-vim.cmd([[
-for s:path in glob('~/.config/nvim/settings/*.vim', 0, 1)
-  exe 'source ' . s:path
-endfor
-]])
-
 for _, file in ipairs(vim.fn.glob('~/.config/nvim/lua/*.lua', 0, 1)) do
   local ok, _ = pcall(require, vim.fn.fnamemodify(file, ':t:r'))
   if not ok then
