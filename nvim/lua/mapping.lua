@@ -65,15 +65,15 @@ function! s:Quote(left, ...)
   execute "normal! `<"
   execute "normal! i" . a:left
 endfunction
-vnoremap "  :<c-u>call <SID>Quote('"')<cr>
-vnoremap '  :<c-u>call <SID>Quote("'")<cr>
-vnoremap `  :<c-u>call <SID>Quote("`")<cr>
-vnoremap {  :<c-u>call <SID>Quote("{",     "}")<cr>
-vnoremap (  :<c-u>call <SID>Quote("(",     ")")<cr>
-vnoremap [  :<c-u>call <SID>Quote("[",     "]")<cr>
-vnoremap <  :<c-u>call <SID>Quote("<",     ">")<cr>
-vnoremap /* :<c-u>call <SID>Quote("/* ",   " */")<cr>
-vnoremap <! :<c-u>call <SID>Quote("<!-- ", " -->")<cr>
+xnoremap "  :<c-u>call <SID>Quote('"')<cr>
+xnoremap '  :<c-u>call <SID>Quote("'")<cr>
+xnoremap `  :<c-u>call <SID>Quote("`")<cr>
+xnoremap {  :<c-u>call <SID>Quote("{",     "}")<cr>
+xnoremap (  :<c-u>call <SID>Quote("(",     ")")<cr>
+xnoremap [  :<c-u>call <SID>Quote("[",     "]")<cr>
+xnoremap <  :<c-u>call <SID>Quote("<",     ">")<cr>
+xnoremap /* :<c-u>call <SID>Quote("/* ",   " */")<cr>
+xnoremap <! :<c-u>call <SID>Quote("<!-- ", " -->")<cr>
 ]])
 
 -- other
