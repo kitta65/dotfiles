@@ -127,6 +127,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         "tsserver",
         "sumneko_lua",
         "bqls",
+        "rust_analyzer"
       }
       for _, server in ipairs(servers) do
         if server == "sumneko_lua" then
