@@ -6,6 +6,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 autoload -U compinit; compinit
+zstyle ':completion:*' completer _expand _complete _correct _approximate
 
 bindkey -e
 # end recommended configuration
