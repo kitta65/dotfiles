@@ -80,6 +80,5 @@ xnoremap <! :<c-u>call <SID>Quote("<!-- ", " -->")<cr>
 vim.keymap.set('n', '/', [[/\v]])
 vim.keymap.set('i', 'jk', '<esc>')
 vim.keymap.set('t', 'jk', [[<c-\><c-n>]])
-vim.keymap.set('t', '<c-w>', [[<c-\><c-n><c-w>]])
 vim.keymap.set('x', 'v', '<esc>')
 vim.keymap.set('i', '<c-g><c-u>', '<esc>viw<s-u>ea')

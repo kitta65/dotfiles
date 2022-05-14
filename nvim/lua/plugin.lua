@@ -125,6 +125,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       local servers = {
         "pyright",
         "tsserver",
+        "eslint",
         "sumneko_lua",
         "bqls",
         "rust_analyzer"
