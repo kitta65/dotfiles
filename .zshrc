@@ -1,6 +1,14 @@
-setopt histignorealldups
+# begin recommended configuration
+setopt histignorealldups sharehistory
+
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+autoload -U compinit; compinit
+
 bindkey -e
-bindkey '^]' forward-word # complete one word
+# end recommended configuration
 
 # bat
 if [ -x "$(command -v batcat)" ]; then
@@ -91,3 +99,6 @@ fi
 
 # other
 alias yyyymmdd='date "+%Y%m%d"'
+if [ -x "$(command -v colordiff)" ]; then
+  alias diff='colordiff'
+fi
