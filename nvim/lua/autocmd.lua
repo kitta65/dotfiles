@@ -13,9 +13,9 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 group = vim.api.nvim_create_augroup("bigquery", {})
 cmds = {
   [[setlocal foldmethod=indent]],
-  [[command! BQUpdateCache lua vim.lsp.buf_request(0, "bq/updateCache", nil, function(err) if err print(err) end)]],
-  [[command! BQClearCache lua vim.lsp.buf_request(0, "bq/clearCache", nil, function(err) if err print(err) end)]],
-  [[command! BQDryRun lua vim.lsp.buf_request(0, "bq/dryRun", {"uri": "file://" . expand("%:p")}, function(err) if err print(err) end)]],
+  [[command! BQUpdateCache lua vim.lsp.buf_request(0, "bq/updateCache", nil, function() end)]],
+  [[command! BQClearCache lua vim.lsp.buf_request(0, "bq/clearCache", nil, function() end)]],
+  [[command! BQDryRun lua vim.lsp.buf_request(0, "bq/dryRun", {uri = "file://" .. vim.fn.expand("%:p")}, function() end)]],
 }
 for _, cmd in ipairs(cmds) do
   vim.api.nvim_create_autocmd({"FileType"}, {

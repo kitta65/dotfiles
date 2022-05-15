@@ -8,7 +8,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
   use 'wbthomason/packer.nvim'
 
   use {
-    'chentau/marks.nvim',
+    'chentoast/marks.nvim',
     config = function ()
       require'marks'.setup {
         default_mappings = false,
