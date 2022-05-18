@@ -11,6 +11,8 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 bindkey -e
 # end recommended configuration
 
+bindkey '^]' forward-word # complete one word
+
 # bat
 if [ -x "$(command -v batcat)" ]; then
   alias cat='batcat'
