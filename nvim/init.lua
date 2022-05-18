@@ -4,6 +4,7 @@ local f = require('myfunc')
 -- most recently defined mapping will work.
 vim.g.mapleader = f.key'<space>'
 vim.g.maplocalleader = f.key'<space>'
+vim.g.do_filetype_lua = 1
 
 vim.cmd([[
 syntax on
