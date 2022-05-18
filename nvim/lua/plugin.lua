@@ -68,7 +68,9 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
         }, {
-          {name = 'buffer'}
+          { name = 'buffer' }
+        }, {
+          { name = 'path' }
         }),
         snippet = {
           expand = function(args)
@@ -148,6 +150,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       {'saadparwaiz1/cmp_luasnip'},
       {"L3MON4D3/LuaSnip"},
       {"hrsh7th/cmp-nvim-lsp"},
+      {'hrsh7th/cmp-path'},
     },
   }
 
