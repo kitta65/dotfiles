@@ -34,8 +34,20 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         git = 0,
         folder_arrows = 0,
       }
-      require'nvim-tree'.setup{}
+      require'nvim-tree'.setup{
+        actions = {
+          open_file = {
+            resize_window = true
+          }
+        }
+      }
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
+      local group = vim.api.nvim_create_augroup("nvim-tree", {})
+      vim.api.nvim_create_autocmd({"FileType"}, {
+        group = group,
+        pattern = {'NvimTree'},
+        command = [[setlocal splitright]]
+      })
     end
   }
 
