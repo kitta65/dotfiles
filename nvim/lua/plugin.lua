@@ -26,14 +26,22 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
   }
 
   use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+    },
+    config = function ()
+      require'telescope'.setup{
+        defaults = {mappings = {}},
+        pickers = {},
+        extensions = {},
+      }
+    end
+  }
+
+  use {
     'kyazdani42/nvim-tree.lua',
     config = function ()
-      vim.g.nvim_tree_show_icons = {
-        folders = 0,
-        files = 0,
-        git = 0,
-        folder_arrows = 0,
-      }
       require'nvim-tree'.setup{
         actions = {
           open_file = {
@@ -62,11 +70,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons'},
     config = function ()
-      require'lualine'.setup{options = {
-        icons_enabled = false,
-        component_separators = {left = '', right = ''},
-        section_separators = {left = '', right = ''},
-      }}
+      require'lualine'.setup{}
     end
   }
 
