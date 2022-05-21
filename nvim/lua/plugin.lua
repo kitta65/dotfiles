@@ -207,9 +207,11 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       require("toggleterm").setup{
         open_mapping = [[<c-\>]],
       }
+      vim.keymap.set('n', '<leader>r', ':ToggleTermSendCurrentLine<cr><down>')
+      vim.keymap.set('x', '<leader>r', ':ToggleTermSendVisualSelection<cr>')
     end,
     as = 'toggleterm.fork',
-    after='nightfox.nvim',
+    after = 'nightfox.nvim',
   }
   use {
     "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
@@ -218,7 +220,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       }
     end,
     disable = true,
-    after='nightfox.nvim',
+    after = 'nightfox.nvim',
   }
 
   use {
