@@ -239,6 +239,11 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
     }
   }
 
+  use {
+    'Vimjas/vim-python-pep8-indent',
+    ft = {"python"}
+  }
+
   if PackerBootstrap then
     require('packer').sync()
   end
