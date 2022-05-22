@@ -207,8 +207,13 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       require("toggleterm").setup{
         open_mapping = [[<c-\>]],
       }
+      vim.api.nvim_create_user_command(
+        "ToggleTermSendVisualSelectionNoTrim",
+        "'<,'> lua require'toggleterm'.send_lines_to_terminal('visual_selection', false, <q-args>)<CR>",
+        { range = true, nargs = "?" }
+      )
       vim.keymap.set('n', '<leader>r', ':ToggleTermSendCurrentLine<cr><down>')
-      vim.keymap.set('x', '<leader>r', ':ToggleTermSendVisualSelection<cr>')
+      vim.keymap.set('x', '<leader>r', ':ToggleTermSendVisualSelectionNoTrim<cr>')
     end,
     as = 'toggleterm.fork',
     after = 'nightfox.nvim',
