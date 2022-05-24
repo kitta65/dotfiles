@@ -36,6 +36,10 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         pickers = {},
         extensions = {},
       }
+      vim.cmd[[
+      nnoremap <leader>f <cmd>Telescope find_files<cr>
+      nnoremap <leader>/ <cmd>Telescope live_grep<cr>
+      ]]
     end
   }
 

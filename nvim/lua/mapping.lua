@@ -6,8 +6,8 @@ vim.keymap.set('n', '<c-p>', ':tabp<cr>')
 
 -- yank, put
 vim.keymap.set('x', 'y', 'ygv<esc>')
-vim.keymap.set('x', '<leader>y', '<esc>:ClipboardYank<cr>')
-vim.keymap.set('n', '<leader>p', ':ClipboardPut<cr>')
+vim.keymap.set('x', '<leader>c', '<esc>:ClipboardYank<cr>')
+vim.keymap.set('n', '<leader>v', ':ClipboardPut<cr>')
 
 -- move
 vim.keymap.set(
@@ -39,7 +39,7 @@ vim.keymap.set(
 )
 
 -- lsp
-vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<cr>')
+vim.keymap.set('n', '<leader>p', '<cmd>lua vim.lsp.buf.formatting()<cr>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', 'd[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 vim.keymap.set('n', 'd]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
