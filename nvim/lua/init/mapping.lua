@@ -1,4 +1,4 @@
-local f = require('myfunc')
+local F = require('myfunc')
 
 -- tab
 vim.keymap.set('n', '<c-n>', ':tabn<cr>')
@@ -26,7 +26,7 @@ vim.keymap.set({'i', 'c', 't'}, '<c-l>', '<right>')
 vim.keymap.set('n', '<s-g>', '<s-g>$')
 vim.keymap.set('x', '<s-g>', '<s-g>g_')
 vim.keymap.set({'n', 'x'}, 'gg', 'gg0')
-vim.keymap.set('x', '$', function() return vim.fn.mode() == f.key"<c-v>" and "$" or "g_" end, {expr = true})
+vim.keymap.set('x', '$', function() return vim.fn.mode() == F.key"<c-v>" and "$" or "g_" end, {expr = true})
 vim.keymap.set(
   {'n', 'x'},
   '0',

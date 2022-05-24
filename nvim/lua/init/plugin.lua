@@ -105,19 +105,13 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         })
       })
 
-      local ls = require"luasnip"
-      local s = ls.snippet
-      local t = ls.text_node
-      local c = ls.choice_node
-      ls.add_snippets("all", {
-        s("today", c(1, {t(vim.fn.strftime('%Y%m%d')), t(vim.fn.strftime('%Y-%m-%d'))}))
-      })
+      require'myfunc'.exec_all("snip")
 
       vim.keymap.set(
         {"i", "s"},
         "<tab>",
         function() return
-          ls.expand_or_jumpable()
+          require"luasnip".expand_or_jumpable()
           and "<plug>luasnip-expand-or-jump"
           or "<tab>"
         end,

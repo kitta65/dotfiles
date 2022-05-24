@@ -15,4 +15,8 @@ function M.exec_all(dir)
   end
 end
 
+function M.today(fmt)
+  return vim.fn.strftime(fmt)
+end
+
 return M
