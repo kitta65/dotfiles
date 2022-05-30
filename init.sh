@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 cd $(dirname $0)
 
 dotfile_comment='# Added by dotfiles/init.sh'
 
 function initialize_file() {
+  touch $1 # create file if not exists
+
   if [ "$(uname)" == 'Darwin' ]; then
     gsed --in-place "\%${dotfile_comment}%d" $1
   else
