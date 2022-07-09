@@ -3,9 +3,9 @@ local cmds
 
 -- common
 group = vim.api.nvim_create_augroup("common", {})
-vim.api.nvim_create_autocmd({"FileType"}, {
+vim.api.nvim_create_autocmd({ "FileType" }, {
   group = group,
-  pattern = {'*'},
+  pattern = { '*' },
   command = [[syntax sync minlines=10000]]
 })
 
@@ -18,9 +18,9 @@ cmds = {
   [[command! BQDryRun lua vim.lsp.buf_request(0, "bq/dryRun", {uri = "file://" .. vim.fn.expand("%:p")}, function() end)]],
 }
 for _, cmd in ipairs(cmds) do
-  vim.api.nvim_create_autocmd({"FileType"}, {
+  vim.api.nvim_create_autocmd({ "FileType" }, {
     group = group,
-    pattern = {'bigquery'},
+    pattern = { 'bigquery' },
     command = cmd
   })
 end
@@ -34,18 +34,18 @@ cmds = {
   [[inoremap <buffer> "<space> "<space>]]
 }
 for _, cmd in ipairs(cmds) do
-  vim.api.nvim_create_autocmd({"FileType"}, {
+  vim.api.nvim_create_autocmd({ "FileType" }, {
     group = group,
-    pattern = {'vim'},
+    pattern = { 'vim' },
     command = cmd
   })
 end
 
 -- go
 group = vim.api.nvim_create_augroup("go", {})
-vim.api.nvim_create_autocmd({"FileType"}, {
+vim.api.nvim_create_autocmd({ "FileType" }, {
   group = group,
-  pattern = {'go'},
+  pattern = { 'go' },
   command = [[setlocal noexpandtab]]
 })
 
@@ -58,9 +58,9 @@ cmds = {
   [[syntax match markdownUrl "\S\+" nextgroup=markdownUrlTitle skipwhite contained conceal cchar=∞]]
 }
 for _, cmd in ipairs(cmds) do
-  vim.api.nvim_create_autocmd({"FileType"}, {
+  vim.api.nvim_create_autocmd({ "FileType" }, {
     group = group,
-    pattern = {'markdown'},
+    pattern = { 'markdown' },
     command = cmd
   })
 end

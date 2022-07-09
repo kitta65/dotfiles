@@ -11,31 +11,30 @@ vim.keymap.set('n', '<leader>v', ':ClipboardPut<cr>')
 
 -- move
 vim.keymap.set(
-  {'i', 'c', 't'},
+  { 'i', 'c', 't' },
   '<c-j>',
   function() return vim.fn.pumvisible() == 1 and "<c-e><down>" or "<down>" end,
-  {expr = true}
+  { expr = true }
 )
 vim.keymap.set(
-  {'i', 'c', 't'},
+  { 'i', 'c', 't' },
   '<c-k>',
   function() return vim.fn.pumvisible() == 1 and "<c-e><up>" or "<up>" end,
-  {expr = true}
+  { expr = true }
 )
-vim.keymap.set({'i', 'c', 't'}, '<c-l>', '<right>')
+vim.keymap.set({ 'i', 'c', 't' }, '<c-l>', '<right>')
 vim.keymap.set('n', '<s-g>', '<s-g>$')
 vim.keymap.set('x', '<s-g>', '<s-g>g_')
-vim.keymap.set({'n', 'x'}, 'gg', 'gg0')
-vim.keymap.set('x', '$', function() return vim.fn.mode() == F.key"<c-v>" and "$" or "g_" end, {expr = true})
+vim.keymap.set({ 'n', 'x' }, 'gg', 'gg0')
+vim.keymap.set('x', '$', function() return vim.fn.mode() == F.key "<c-v>" and "$" or "g_" end, { expr = true })
 vim.keymap.set(
-  {'n', 'x'},
+  { 'n', 'x' },
   '0',
-  function() return
-    vim.fn.matchend(vim.fn.getline("."), [[\v\s*]]) + 1 <  vim.fn.col(".")
-    and "^"
-    or "0"
+  function() return vim.fn.matchend(vim.fn.getline("."), [[\v\s*]]) + 1 < vim.fn.col(".")
+        and "^"
+        or "0"
   end,
-  {expr = true}
+  { expr = true }
 )
 
 -- lsp
@@ -45,15 +44,15 @@ vim.keymap.set('n', 'd[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 vim.keymap.set('n', 'd]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
 -- quote
-vim.keymap.set({'i', 't'}, '(', ')<left>(')
-vim.keymap.set({'i', 't'}, '{', '}<left>{')
-vim.keymap.set({'i', 't'}, '[', ']<left>[')
-vim.keymap.set({'i', 't'}, '<', '><left><')
-vim.keymap.set({'i', 't'}, '< ', '< ')
-vim.keymap.set({'i', 't'}, '<=', '<=')
-vim.keymap.set({'i', 't'}, '"', '"<left>"')
-vim.keymap.set({'i', 't'}, "'", "'<left>'")
-vim.keymap.set({'i', 't'}, "`", '`<left>`')
+vim.keymap.set({ 'i', 't' }, '(', ')<left>(')
+vim.keymap.set({ 'i', 't' }, '{', '}<left>{')
+vim.keymap.set({ 'i', 't' }, '[', ']<left>[')
+vim.keymap.set({ 'i', 't' }, '<', '><left><')
+vim.keymap.set({ 'i', 't' }, '< ', '< ')
+vim.keymap.set({ 'i', 't' }, '<=', '<=')
+vim.keymap.set({ 'i', 't' }, '"', '"<left>"')
+vim.keymap.set({ 'i', 't' }, "'", "'<left>'")
+vim.keymap.set({ 'i', 't' }, "`", '`<left>`')
 vim.keymap.set('i', '(<cr>', '()<left><cr><esc><s-o>')
 vim.keymap.set('i', '{<cr>', '{}<left><cr><esc><s-o>')
 vim.keymap.set('i', '[<cr>', '[]<left><cr><esc><s-o>')
