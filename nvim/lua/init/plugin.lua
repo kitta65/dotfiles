@@ -131,7 +131,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
                   or vim.fn.fnamemodify(fname, ':h')
             end,
             settings = { bqExtensionVSCode = {
-              diagnostic = { forVSCode = false }
+              diagnostic = { forVSCode = false },
+              formatting = { printKeywordsInUpperCase = false },
             } },
           },
         }
