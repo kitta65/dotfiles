@@ -70,9 +70,8 @@ xnoremap `  :<c-u>call <SID>Quote("`")<cr>
 xnoremap {  :<c-u>call <SID>Quote("{",     "}")<cr>
 xnoremap (  :<c-u>call <SID>Quote("(",     ")")<cr>
 xnoremap [  :<c-u>call <SID>Quote("[",     "]")<cr>
-xnoremap <  :<c-u>call <SID>Quote("<",     ">")<cr>
 xnoremap /* :<c-u>call <SID>Quote("/* ",   " */")<cr>
-xnoremap <! :<c-u>call <SID>Quote("<!-- ", " -->")<cr>
+xnoremap <expr> < mode() ==# "V" ? "<" : ":\<c-u>call \<SID>Quote('<', '>')\<cr>"
 ]])
 
 -- other
