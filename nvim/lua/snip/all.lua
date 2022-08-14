@@ -31,6 +31,14 @@ ls.add_snippets("bigquery", {
   }),
 })
 
+ls.add_snippets("bigquery", {
+  s("rows", t[[rows between unbounded preceding and unbounded following]]),
+})
+
+ls.add_snippets("bigquery", {
+  s("range", t[[range between unbounded preceding and unbounded following]]),
+})
+
 ls.add_snippets("python", {
   s("docstring", t{
     [[#standardSQL]],
