@@ -143,7 +143,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         "eslint",
         "sumneko_lua",
         "bqls",
-        "rust_analyzer"
+        "rust_analyzer",
+        "gopls",
       }
       for _, server in ipairs(servers) do
         if server == "sumneko_lua" then
@@ -248,6 +249,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
     'Vimjas/vim-python-pep8-indent',
     ft = { "python" }
   }
+
+  use 'hashivim/vim-terraform'
 
   if PackerBootstrap then
     require('packer').sync()
