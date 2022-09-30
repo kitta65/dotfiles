@@ -1,15 +1,6 @@
-# begin recommended configuration
-setopt histignorealldups sharehistory
-
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
-autoload -U compinit; compinit
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-
-bindkey -e
-# end recommended configuration
+# Yor .zshrc should contain recommended settings.
+# If not, this command is useful.
+# autoload -U zsh-newuser-install; zsh-newuser-install -f
 
 bindkey '^]' forward-word # complete one word
 
