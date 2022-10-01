@@ -8,8 +8,8 @@ local F = require "myfunc"
 
 ls.add_snippets("all", {
   s("today", t(F.today('%Y%m%d'))),
-  s("yyyymmdd", t"%Y%m%d"),
-  s("yyyy-mm-dd", t"%Y-%m-%d"),
+  s("yyyymmdd", t "%Y%m%d"),
+  s("yyyy-mm-dd", t "%Y-%m-%d"),
 })
 
 ls.add_snippets("bigquery", {
