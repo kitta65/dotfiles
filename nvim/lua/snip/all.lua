@@ -61,3 +61,22 @@ ls.add_snippets("sh", {
     [[cd $(dirname $0)]],
   }),
 })
+
+ls.add_snippets("go", {
+  s("init", {
+    t {
+      "package main",
+      "import (",
+      "\t\"fmt\"",
+      ")",
+      "func main() {",
+      "\tfmt.Println(\"hello world!\")",
+      "\t",
+    },
+    i(0),
+    t {
+      "",
+      "}",
+    },
+  }),
+})
