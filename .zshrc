@@ -1,6 +1,7 @@
 # Yor .zshrc should contain recommended settings.
 # If not, this command is useful.
 # autoload -U zsh-newuser-install; zsh-newuser-install -f
+setopt HIST_IGNORE_DUPS
 
 bindkey '^]' forward-word # complete one word
 
