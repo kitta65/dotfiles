@@ -64,3 +64,14 @@ for _, cmd in ipairs(cmds) do
     command = cmd
   })
 end
+
+-- rust
+group = vim.api.nvim_create_augroup("rust", {})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = group,
+  pattern = { 'rust' },
+  callback = function()
+    vim.keymap.set('i', '|', '|<left>|')
+  end,
+  -- command = [[inoremap \| \|<left>\|]]
+})

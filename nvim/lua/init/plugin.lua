@@ -187,10 +187,12 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       vim.keymap.set('n', '<leader>b', ':Gitsigns toggle_current_line_blame<cr>')
       vim.cmd([[highlight link GitSignsCurrentLineBlame Comment]])
     end,
-    disable = true,
   }
 
-  use 'airblade/vim-gitgutter'
+  use {
+    'airblade/vim-gitgutter',
+    disable = true,
+  }
 
   use 'dr666m1/vim-clipboard'
 
