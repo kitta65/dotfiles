@@ -119,7 +119,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       )
       vim.keymap.set({ "i", "s" }, "<c-e>", "<plug>luasnip-next-choice")
 
-      local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
       local lspconfig = require 'lspconfig'
       -- See :h lspconfig-adding-servers
       local configs = require 'lspconfig.configs'
@@ -132,8 +132,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
                   or vim.fn.fnamemodify(fname, ':h')
             end,
             settings = { bqExtensionVSCode = {
-              diagnostic = { forVSCode = false },
-              formatting = { printKeywordsInUpperCase = true },
+              diagnostic = { forVSCode = false, dryRunOnSave = false },
+              formatting = { printKeywordsInUpperCase = false },
               experimental = { formatEachLine = true },
             } },
           },
@@ -147,6 +147,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         "bqls",
         "rust_analyzer",
         "gopls",
+        "jdtls",
       }
       for _, server in ipairs(servers) do
         if server == "sumneko_lua" then
@@ -222,6 +223,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
     end,
     as = 'toggleterm.fork',
     after = 'nightfox.nvim',
+    disable = true,
   }
   use {
     "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()

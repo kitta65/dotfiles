@@ -2,6 +2,11 @@
 .DS_Store
 Thumbs.db
 
-# other
+# eclipse
+.project/
+.settings/
+.classpath/
+
+# python
 .python-version
 venv/
