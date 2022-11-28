@@ -66,6 +66,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
 
   use {
     "EdenEast/nightfox.nvim",
+    commit = "59c3dbcec362eff7794f1cb576d56fd8a3f2c8bb",
     config = function()
       vim.cmd("colorscheme terafox")
     end,
