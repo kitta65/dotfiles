@@ -2,10 +2,11 @@
 .DS_Store
 Thumbs.db
 
-# eclipse
-.project/
+# java
+.classpath
+.factorypath
+.project
 .settings/
-.classpath/
 
 # python
 .python-version
