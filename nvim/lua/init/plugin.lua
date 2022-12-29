@@ -206,7 +206,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       require("indent_blankline").setup {
         show_end_of_line = true,
       }
-    end
+    end,
+    disable = true,
   }
 
   use {

@@ -5,6 +5,9 @@ setopt HIST_IGNORE_DUPS
 
 bindkey '^]' forward-word # complete one word
 
+# https://stackoverflow.com/questions/444951/zsh-stop-backward-kill-word-on-directory-delimiter/11200998#11200998
+export WORDCHARS=${WORDCHARS/\//}
+
 # bat
 if [ -x "$(command -v batcat)" ]; then
   alias cat='batcat'
