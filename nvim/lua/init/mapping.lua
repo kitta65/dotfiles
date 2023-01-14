@@ -38,7 +38,7 @@ vim.keymap.set(
 )
 
 -- lsp
-vim.keymap.set('n', '<leader>p', '<cmd>lua vim.lsp.buf.format { async = true }<cr>')
+vim.keymap.set('n', '<leader>p', '<cmd>lua vim.lsp.buf.formatting()<cr>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', 'd[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 vim.keymap.set('n', 'd]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
