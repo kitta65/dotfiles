@@ -23,7 +23,19 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
           prev_bookmark0 = 'm[',
         }
       }
-    end
+    end,
+    disable = true,
+  }
+
+  use {
+    'MattesGroeger/vim-bookmarks',
+    setup = function()
+      vim.g["bookmark_auto_save"] = 0
+    end,
+    config = function()
+      vim.keymap.set('n', 'm[', ':BookmarkPrev<cr>')
+      vim.keymap.set('n', 'm]', ':BookmarkNext<cr>')
+    end,
   }
 
   use {
@@ -57,6 +69,9 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         git = {
           ignore = false,
         },
+        view = { mappings = { list = {
+          { key = "<CR>", action = "tabnew" }
+        } } }
       }
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
       local group = vim.api.nvim_create_augroup("nvim-tree", {})
