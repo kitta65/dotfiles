@@ -50,9 +50,13 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       require 'nvim-tree'.setup {
         actions = {
           open_file = {
-            resize_window = true
+            resize_window = true,
+            quit_on_open = true,
           }
-        }
+        },
+        git = {
+          ignore = false,
+        },
       }
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
       local group = vim.api.nvim_create_augroup("nvim-tree", {})
