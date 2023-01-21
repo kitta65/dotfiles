@@ -38,7 +38,17 @@ vim.keymap.set(
 )
 
 -- lsp
-vim.keymap.set('n', '<leader>p', '<cmd>lua vim.lsp.buf.formatting()<cr>')
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
+function _G.myformat()
+  vim.lsp.buf.format({
+    filter = function(client)
+      return client.name ~= "eslint" and client.name ~= "tsserver"
+    end,
+    async = true,
+  })
+end
+
+vim.keymap.set('n', '<leader>p', '<cmd>lua myformat()<cr>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', 'd[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 vim.keymap.set('n', 'd]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
