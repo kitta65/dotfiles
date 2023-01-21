@@ -24,7 +24,6 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         }
       }
     end,
-    disable = true,
   }
 
   use {
@@ -36,6 +35,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       vim.keymap.set('n', 'm[', ':BookmarkPrev<cr>')
       vim.keymap.set('n', 'm]', ':BookmarkNext<cr>')
     end,
+    disable = true,
   }
 
   use {
@@ -70,7 +70,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
           ignore = false,
         },
         view = { mappings = { list = {
-          { key = "<CR>", action = "tabnew" }
+          { key = "<leader><CR>", action = "tabnew" }
         } } }
       }
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
