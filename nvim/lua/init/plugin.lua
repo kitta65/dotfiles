@@ -9,6 +9,13 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
   use 'wbthomason/packer.nvim'
 
   use {
+    'dr666m1/signbar.nvim',
+    config = function()
+      require("signbar").setup {}
+    end
+  }
+
+  use {
     'chentoast/marks.nvim',
     config = function()
       require 'marks'.setup {
