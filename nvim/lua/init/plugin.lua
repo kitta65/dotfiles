@@ -170,7 +170,7 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         "pyright",
         "tsserver",
         "eslint",
-        "sumneko_lua",
+        -- "sumneko_lua",
         "bqls",
         "rust_analyzer",
         "gopls",
