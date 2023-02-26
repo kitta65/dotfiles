@@ -160,7 +160,11 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
             end,
             settings = { bqExtensionVSCode = {
               diagnostic = { forVSCode = false, dryRunOnSave = false },
-              formatting = { printKeywordsInUpperCase = false },
+              formatting = {
+                indentCte = false,
+                printBlankLineAfterCte = true,
+                printKeywordsInUpperCase = false,
+              },
               experimental = { formatEachLine = true },
             } },
           },
