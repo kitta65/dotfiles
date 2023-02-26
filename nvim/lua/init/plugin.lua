@@ -9,6 +9,13 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
   use 'wbthomason/packer.nvim'
 
   use {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+  }
+
+  use {
     'dr666m1/signbar.nvim',
     config = function()
       require("signbar").setup {}
@@ -138,7 +145,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
       vim.keymap.set(
         { "i", "s" },
         "<tab>",
-        function() return require "luasnip".expand_or_jumpable()
+        function()
+          return require "luasnip".expand_or_jumpable()
               and "<plug>luasnip-expand-or-jump"
               or "<tab>"
         end,
@@ -155,7 +163,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
           default_config = {
             cmd = { 'bq-language-server', '--stdio' },
             filetypes = { 'bigquery' },
-            root_dir = function(fname) return lspconfig.util.find_git_ancestor(fname)
+            root_dir = function(fname)
+              return lspconfig.util.find_git_ancestor(fname)
                   or vim.fn.fnamemodify(fname, ':h')
             end,
             settings = { bqExtensionVSCode = {
@@ -174,14 +183,14 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
         "pyright",
         "tsserver",
         "eslint",
-        -- "sumneko_lua",
+        "lua_ls",
         "bqls",
         "rust_analyzer",
         "gopls",
         "jdtls",
       }
       for _, server in ipairs(servers) do
-        if server == "sumneko_lua" then
+        if server == "lua_ls" then
           lspconfig[server].setup {
             capabilities = capabilities,
             settings = {
@@ -242,27 +251,27 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
 
   use {
     "dr666m1/toggleterm.nvim", branch = 'fix/shade_color', config = function()
-      require("toggleterm").setup {
-        open_mapping = [[<c-\>]],
-      }
-      vim.api.nvim_create_user_command(
-        "ToggleTermSendVisualSelectionNoTrim",
-        "'<,'> lua require'toggleterm'.send_lines_to_terminal('visual_selection', false, <q-args>)<CR>",
-        { range = true, nargs = "?" }
-      )
-      vim.keymap.set('n', '<leader>r', ':ToggleTermSendCurrentLine<cr><down>')
-      vim.keymap.set('x', '<leader>r', ':ToggleTermSendVisualSelectionNoTrim<cr>')
-    end,
+    require("toggleterm").setup {
+      open_mapping = [[<c-\>]],
+    }
+    vim.api.nvim_create_user_command(
+      "ToggleTermSendVisualSelectionNoTrim",
+      "'<,'> lua require'toggleterm'.send_lines_to_terminal('visual_selection', false, <q-args>)<CR>",
+      { range = true, nargs = "?" }
+    )
+    vim.keymap.set('n', '<leader>r', ':ToggleTermSendCurrentLine<cr><down>')
+    vim.keymap.set('x', '<leader>r', ':ToggleTermSendVisualSelectionNoTrim<cr>')
+  end,
     as = 'toggleterm.fork',
     after = 'nightfox.nvim',
     disable = true,
   }
   use {
     "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-      require("toggleterm").setup {
-        open_mapping = [[<c-\>]],
-      }
-    end,
+    require("toggleterm").setup {
+      open_mapping = [[<c-\>]],
+    }
+  end,
     disable = true,
     after = 'nightfox.nvim',
   }
