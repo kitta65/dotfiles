@@ -15,6 +15,8 @@ return require('packer').startup(function(use) -- `use` satisfies language serve
     end
   }
 
+  use 'lark-parser/vim-lark-syntax'
+
   use {
     'dr666m1/signbar.nvim',
     config = function()
