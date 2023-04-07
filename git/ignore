@@ -11,3 +11,5 @@ Thumbs.db
 # python
 .python-version
 venv/
+
+temp/
