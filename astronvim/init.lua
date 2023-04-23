@@ -2,6 +2,13 @@ return {
   colorscheme = "terafox",
   plugins = {
     "EdenEast/nightfox.nvim",
+    {
+      "dr666m1/vim-clipboard",
+      keys = {
+        { "<leader>c", "<esc>:ClipboardYank<cr>", mode = "v",                   desc = "copy to clipboard" },
+        { "<leader>v", ":ClipboardPut<cr>",       desc = "paste from clipboard" },
+      }
+    },
     -- https://astronvim.com/Recipes/snippets
     {
       "L3MON4D3/LuaSnip",
