@@ -11,22 +11,23 @@ local keys = {
 }
 
 local quotes = {
-  { "'" },
-  { "'''" },
-  { '"' },
-  { '"""' },
-  { '|' },
-  { '_' },
-  { '__' },
-  { '*' },
-  { '**' },
-  { '`' },
-  { '```' },
-  { "[",  "]" },
-  { "<",  ">" },
-  { "{",  "}" },
-  { "{{", "}}" },
-  { "/*", "*/" },
+  -- {left, right, cr}
+  { "'",   nil,  true },
+  { "'''", nil,  true },
+  { '"',   nil,  true },
+  { '"""', nil,  true },
+  { '|',   nil,  false },
+  { '_',   nil,  false },
+  { '__',  nil,  false },
+  { '*',   nil,  false },
+  { '**',  nil,  false },
+  { '`',   nil,  true },
+  { '```', nil,  true },
+  { "[",   "]",  true },
+  { "<",   ">",  true },
+  { "{",   "}",  true },
+  { "{{",  "}}", true },
+  { "/*",  "*/", true },
 }
 for i = 1, #quotes do
   local l = quotes[i][1]
@@ -41,6 +42,9 @@ for i = 1, #quotes do
     .. l .. '<c-r>"' .. r
     .. '<esc>:set nopaste<cr>'
   }
+  if quotes[i][3] then
+    keys.i[l .. "<cr>"] = { l .. r .. string.rep("<left>", #r) .. "<cr><esc><s-o>" }
+  end
 end
 
 return keys
