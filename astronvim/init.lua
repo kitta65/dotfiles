@@ -29,6 +29,13 @@ return {
         filetypes = { 'sql' },
         root_dir = function() return vim.fn.getcwd() end,
         settings = { bqExtensionVSCode = {} },
+      },
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } }
+          }
+        }
       }
     },
     servers = { "bqls" },
