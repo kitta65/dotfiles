@@ -25,11 +25,13 @@ rm $HOME/.config/git 2> /dev/null || true
 ln -s $(pwd)/git $HOME/.config/git
 
 # Neovim
-mkdir -p $HOME/.config/coc
-rm $HOME/.config/nvim 2> /dev/null || true
-rm $HOME/.config/coc/ultisnips 2> /dev/null || true
-ln -s $(pwd)/nvim $HOME/.config/nvim
-ln -s $(pwd)/nvim/snips $HOME/.config/coc/ultisnips
+# mkdir -p $HOME/.config/coc
+# rm $HOME/.config/nvim 2> /dev/null || true
+# rm $HOME/.config/coc/ultisnips 2> /dev/null || true
+# ln -s $(pwd)/nvim $HOME/.config/nvim
+# ln -s $(pwd)/nvim/snips $HOME/.config/coc/ultisnips
+mkdir -p $HOME/.config/astronvim/lua
+ln -s $(pwd)/astronvim $HOME/.config/astronvim/lua/user
 
 # tmux
 rm $HOME/.tmux.conf 2> /dev/null || true
