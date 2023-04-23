@@ -21,5 +21,16 @@ return {
     { "rafamadriz/friendly-snippets", enabled = false },
     { "max397574/better-escape.nvim", enabled = false },
     { "windwp/nvim-autopairs",        enabled = false },
-  }
+  },
+  lsp = {
+    config = {
+      bqls = {
+        cmd = { 'bq-language-server', '--stdio' },
+        filetypes = { 'sql' },
+        root_dir = function() return vim.fn.getcwd() end,
+        settings = { bqExtensionVSCode = {} },
+      }
+    },
+    servers = { "bqls" },
+  },
 }
