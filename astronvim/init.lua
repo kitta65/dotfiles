@@ -23,21 +23,6 @@ return {
     { "windwp/nvim-autopairs",        enabled = false },
   },
   lsp = {
-    config = {
-      bqls = {
-        cmd = { 'bq-language-server', '--stdio' },
-        filetypes = { 'sql' },
-        root_dir = function() return vim.fn.getcwd() end,
-        settings = { bqExtensionVSCode = {} },
-      },
-      lua_ls = {
-        settings = {
-          Lua = {
-            diagnostics = { globals = { "vim" } }
-          }
-        }
-      }
-    },
     servers = { "bqls" },
   },
 }
