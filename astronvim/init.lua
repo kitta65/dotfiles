@@ -1,7 +1,5 @@
 return {
-  colorscheme = "terafox",
   plugins = {
-    "EdenEast/nightfox.nvim",
     {
       "dr666m1/vim-clipboard",
       keys = {
