@@ -7,9 +7,19 @@ local keys = {
     ['<c-g><c-u>'] = { '<esc>viw<s-u>ea', desc = "uppercase" }
   },
   v = {
-    ["v"] = { "<esc>", desc = "escape" }
+    ["v"] = { "<esc>", desc = "escape" },
   },
-  x = {}
+  x = {
+    ["y"] = { "ygv<esc>", desc = "yank and do not move back" },
+    ["<s-g>"] = { "<s-g>g_", desc = "go to end of file" },
+    ["gg"] = { "gg0", desc = "go to start of file" },
+  },
+  n = {
+    ["<c-n>"] = { ":tabn<cr>", desc = "next tab" },
+    ["<c-p>"] = { ":tabp<cr>", desc = "previous tab" },
+    ["<s-g>"] = { "<s-g>$", desc = "go to end of file" },
+    ["gg"] = { "gg0", desc = "go to start of file" },
+  },
 }
 
 local quotes = {
