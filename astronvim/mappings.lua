@@ -4,10 +4,12 @@ local keys = {
     ["<c-j>"] = { "<down>", desc = "↓" },
     ["<c-k>"] = { "<up>", desc = "↑" },
     ["<c-l>"] = { "<right>", desc = "→" },
+    ['<c-g><c-u>'] = { '<esc>viw<s-u>ea', desc = "uppercase" }
   },
   v = {
     ["v"] = { "<esc>", desc = "escape" }
   },
+  x = {}
 }
 
 local quotes = {
@@ -39,7 +41,7 @@ for i = 1, #quotes do
     r = l
   end
   keys.i[l .. "<tab>"] = { r .. string.rep("<left>", #r) .. l }
-  keys.v[l] = {
+  keys.x[l] = {
     ':<c-u>set paste<cr>'
     .. 'gvs' -- select again
     .. l .. '<c-r>"' .. r
