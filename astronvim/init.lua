@@ -40,6 +40,14 @@ return {
         end
         return true
       end
-    }
+    },
+    setup_handlers = {
+      -- suppress file is a commonjs suggestion
+      tsserver = function()
+        require('lspconfig').tsserver.setup({
+          init_options = { preferences = { disableSuggestions = true, }, },
+        })
+      end
+    },
   },
 }
