@@ -26,6 +26,25 @@ return {
         return config
       end,
     },
+    {
+      "hrsh7th/nvim-cmp",
+      opts = function(_, opts)
+        local cmp = require "cmp"
+        opts.sources = cmp.config.sources {
+          {
+            name = "nvim_lsp",
+            priority = 1000,
+            entry_filter = function(entry)
+              return entry:get_kind() ~= cmp.lsp.CompletionItemKind.Snippets
+            end -- https://neovim.discourse.group/t/how-to-disable-lsp-snippets/922/4
+          },
+          { name = "luasnip", priority = 750 },
+          { name = "buffer",  priority = 500 },
+          { name = "path",    priority = 250 },
+        }
+        return opts
+      end,
+    },
     { "rafamadriz/friendly-snippets", enabled = false },
     { "max397574/better-escape.nvim", enabled = false },
     { "windwp/nvim-autopairs",        enabled = false },
