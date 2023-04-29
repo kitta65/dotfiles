@@ -8,6 +8,11 @@ local keys = {
   },
   v = {
     ["v"] = { "<esc>", desc = "escape" },
+    ["0"] = { function()
+      return vim.fn.matchend(vim.fn.getline("."), [[\v\s*]]) + 1 < vim.fn.col(".")
+          and "^"
+          or "0"
+    end, expr = true },
   },
   x = {
     ["y"] = { "ygv<esc>", desc = "yank and do not move back" },
@@ -19,6 +24,11 @@ local keys = {
     ["<c-p>"] = { ":tabp<cr>", desc = "previous tab" },
     ["<s-g>"] = { "<s-g>$", desc = "go to end of file" },
     ["gg"] = { "gg0", desc = "go to start of file" },
+    ["0"] = { function()
+      return vim.fn.matchend(vim.fn.getline("."), [[\v\s*]]) + 1 < vim.fn.col(".")
+          and "^"
+          or "0"
+    end, expr = true },
   },
 }
 
