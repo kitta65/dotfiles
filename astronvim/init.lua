@@ -7,6 +7,18 @@ return {
         { "<leader>v", ":ClipboardPut<cr>",       desc = "paste from clipboard" },
       }
     },
+    {
+      "MattesGroeger/vim-bookmarks",
+      init = function()
+        vim.g.bookmark_no_default_key_mappings = 1
+        vim.g.bookmark_auto_save = 0
+      end,
+      keys = {
+        { "mm", ":silent BookmarkToggle<cr>" },
+        { "]m", ":silent BookmarkNext<cr>" },
+        { "[m", ":silent BookmarkPrev<cr>" },
+      }
+    },
     -- https://astronvim.com/Recipes/snippets
     {
       "L3MON4D3/LuaSnip",
