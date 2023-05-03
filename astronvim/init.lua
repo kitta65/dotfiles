@@ -68,6 +68,7 @@ return {
     { "rafamadriz/friendly-snippets", enabled = false },
     { "max397574/better-escape.nvim", enabled = false },
     { "windwp/nvim-autopairs",        enabled = false },
+    { "folke/which-key.nvim",         enabled = false },
   },
   lsp = {
     servers = { "bqls" },

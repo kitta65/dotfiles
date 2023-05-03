@@ -35,7 +35,7 @@ local quotes = {
   -- {left, right, cr}
   { "'",   nil,  true },
   { "'''", nil,  true },
-  { '"',   nil,  true },
+  { '"',   nil,  true }, -- confilicts with which-key.nvim
   { '"""', nil,  true },
   { '|',   nil,  false },
   { '_',   nil,  false },
