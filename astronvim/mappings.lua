@@ -5,7 +5,7 @@ keys["i"] = {
   ["<c-j>"] = { "<down>", desc = "↓" },
   ["<c-k>"] = { "<up>", desc = "↑" },
   ["<c-l>"] = { "<right>", desc = "→" },
-  ['<c-g><c-u>'] = { '<esc>viw<s-u>ea', desc = "uppercase" }
+  ['<c-g><c-u>'] = { '<esc>viw<s-u>ea', desc = "uppercase" },
 }
 
 keys["v"] = {
@@ -24,8 +24,8 @@ keys["x"] = {
 }
 
 keys["n"] = {
-  ["<c-n>"] = { ":tabn<cr>", desc = "next tab" },
-  ["<c-p>"] = { ":tabp<cr>", desc = "previous tab" },
+  ["]t"] = { ":tabn<cr>", desc = "next tab" },
+  ["[t"] = { ":tabp<cr>", desc = "previous tab" },
   ["<s-g>"] = { "<s-g>$", desc = "go to end of file" },
   ["gg"] = keys["x"]["gg"],
   ["0"] = keys["v"]["0"],
@@ -61,10 +61,17 @@ for i = 1, #quotes do
   end
   keys.i[l .. "<tab>"] = { r .. string.rep("<left>", #r) .. l }
   keys.x[l] = {
-    ':<c-u>set paste<cr>'
-    .. 'gvs' -- select again
-    .. l .. '<c-r>"' .. r
-    .. '<esc>:set nopaste<cr>'
+    function()
+      return (
+        vim.fn.mode() == "V"
+        and l
+        or ':<c-u>set paste<cr>'
+        .. 'gvs' -- select again
+        .. l .. '<c-r>"' .. r
+        .. '<esc>:set nopaste<cr>'
+      )
+    end,
+    expr = true,
   }
   if quotes[i][3] then
     keys.i[l .. "<cr>"] = { l .. r .. string.rep("<left>", #r) .. "<cr><esc><s-o>" }

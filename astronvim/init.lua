@@ -42,6 +42,7 @@ return {
       "hrsh7th/nvim-cmp",
       opts = function(_, opts)
         local cmp = require "cmp"
+        local luasnip = require "luasnip"
         opts.sources = cmp.config.sources {
           {
             name = "nvim_lsp",
@@ -54,6 +55,13 @@ return {
           { name = "buffer",  priority = 500 },
           { name = "path",    priority = 250 },
         }
+        opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
+          if luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { "i", "s" })
         return opts
       end,
     },
