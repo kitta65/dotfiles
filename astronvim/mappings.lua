@@ -68,7 +68,7 @@ for i = 1, #quotes do
         or ':<c-u>set paste<cr>'
         .. 'gvs' -- select again
         .. l .. '<c-r>"' .. r
-        .. '<esc>:set nopaste<cr>'
+        .. '<esc>:set nopaste<cr>gv<esc>'
       )
     end,
     expr = true,
