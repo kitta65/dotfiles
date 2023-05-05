@@ -75,7 +75,7 @@ return {
     -- https://astronvim.com/Recipes/advanced_lsp#disabling-formatting-for-a-filter-function
     formatting = {
       filter = function(client)
-        if vim.bo.filetype == "typescript" then
+        if vim.bo.filetype == "typescript" or vim.bo.filetype == "javascript" then
           return client.name == "null-ls"
         end
         return true
