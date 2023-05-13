@@ -79,7 +79,8 @@ return {
           return client.name == "null-ls"
         end
         return true
-      end
+      end,
+      format_on_save = false,
     },
     setup_handlers = {
       -- suppress file is a commonjs suggestion
