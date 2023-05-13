@@ -65,6 +65,12 @@ return {
         return opts
       end,
     },
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      opts = function(_, opts)
+        opts.window.mappings["<c-h>"] = "navigate_up"
+      end,
+    },
     { "rafamadriz/friendly-snippets", enabled = false },
     { "max397574/better-escape.nvim", enabled = false },
     { "windwp/nvim-autopairs",        enabled = false },
