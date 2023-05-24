@@ -10,5 +10,6 @@ return {
       precedes = '«',
       nbsp = '.',
     },
+    clipboard = "",
   },
 }
