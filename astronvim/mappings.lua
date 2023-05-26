@@ -31,6 +31,10 @@ keys["n"] = {
   ["0"] = keys["v"]["0"],
 }
 
+keys["t"] = {
+  ["jk"] = { "<c-\\><c-n>" }
+}
+
 local quotes = {
   -- {left, right, cr}
   { "'",   nil,  true },
