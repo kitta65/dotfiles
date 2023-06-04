@@ -32,7 +32,8 @@ keys["n"] = {
 }
 
 keys["t"] = {
-  ["jk"] = { "<c-\\><c-n>" }
+  ["jk"] = { "<c-\\><c-n>" },
+  ["<C-h>"] = false,
 }
 
 local quotes = {
