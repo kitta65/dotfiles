@@ -77,7 +77,7 @@ return {
     { "folke/which-key.nvim",         enabled = false },
   },
   lsp = {
-    servers = { "bqls", "toyls" },
+    servers = { "bqls" },
     -- https://astronvim.com/Recipes/advanced_lsp#disabling-formatting-for-a-filter-function
     formatting = {
       filter = function(client)
