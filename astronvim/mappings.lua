@@ -10,11 +10,6 @@ keys["i"] = {
 
 keys["v"] = {
   ["v"] = { "<esc>", desc = "escape" },
-  ["0"] = { function()
-    return vim.fn.matchend(vim.fn.getline("."), [[\v\s*]]) + 1 < vim.fn.col(".")
-        and "^"
-        or "0"
-  end, expr = true },
 }
 
 keys["x"] = {
@@ -28,7 +23,6 @@ keys["n"] = {
   ["[t"] = { ":tabp<cr>", desc = "previous tab" },
   ["<s-g>"] = { "<s-g>$", desc = "go to end of file" },
   ["gg"] = keys["x"]["gg"],
-  ["0"] = keys["v"]["0"],
 }
 
 keys["t"] = {
