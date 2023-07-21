@@ -5,7 +5,8 @@ return {
       keys = {
         { "<leader>c", "<esc>:ClipboardYank<cr>", mode = "v",                   desc = "copy to clipboard" },
         { "<leader>v", ":ClipboardPut<cr>",       desc = "paste from clipboard" },
-      }
+      },
+      branch = "ja",
     },
     {
       "MattesGroeger/vim-bookmarks",
