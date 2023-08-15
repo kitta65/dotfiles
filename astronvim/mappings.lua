@@ -8,10 +8,6 @@ keys["i"] = {
   ['<c-g><c-u>'] = { '<esc>viw<s-u>ea', desc = "uppercase" },
 }
 
-keys["v"] = {
-  ["v"] = { "<esc>", desc = "escape" },
-}
-
 keys["x"] = {
   ["y"] = { "ygv<esc>", desc = "yank and do not move back" },
   ["<s-g>"] = { "<s-g>g_", desc = "go to end of file" },
