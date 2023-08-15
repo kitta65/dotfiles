@@ -1,6 +1,13 @@
 local group
 local cmds
 
+group = vim.api.nvim_create_augroup("common", {})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = group,
+  pattern = { '*' },
+  command = [[syntax sync minlines=10000]]
+})
+
 group = vim.api.nvim_create_augroup("sql", {})
 cmds = {
   [[command! BQUpdateCache lua vim.lsp.buf_request(0, "bq/updateCache", nil, function() end)]],
