@@ -1,13 +1,6 @@
 return {
   plugins = {
     {
-      "dr666m1/vim-clipboard",
-      keys = {
-        { "<leader>c", "<esc>:ClipboardYank<cr>", mode = "v",                   desc = "copy to clipboard" },
-        { "<leader>v", ":ClipboardPut<cr>",       desc = "paste from clipboard" },
-      },
-    },
-    {
       "MattesGroeger/vim-bookmarks",
       init = function()
         vim.g.bookmark_no_default_key_mappings = 1
@@ -92,7 +85,7 @@ return {
       -- suppress file is a commonjs suggestion
       tsserver = function()
         require('lspconfig').tsserver.setup({
-          init_options = { preferences = { disableSuggestions = true, }, },
+          init_options = { preferences = { disableSuggestions = true } }
         })
       end
     },
