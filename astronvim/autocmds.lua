@@ -22,6 +22,13 @@ for _, cmd in ipairs(cmds) do
   })
 end
 
+group = vim.api.nvim_create_augroup("julia", {})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = group,
+  pattern = { 'julia' },
+  command = [[setlocal tabstop=4 shiftwidth=4]]
+})
+
 group = vim.api.nvim_create_augroup("noexpandtab", {})
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = group,
