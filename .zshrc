@@ -80,19 +80,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # wsl
 # See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
 if [ -n "$WSL_DISTRO_NAME" ]; then
-  # in the case of `appendWindowsPath = false`
-  export PATH=$PATH:/mnt/c/WINDOWS/System32
-  export PATH=$PATH:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0
-
-  function setWinUserProfile() {
-    # It is not a good idea to run `wslvar` every time.
-    # It will take a lot of time.
-    if ! [ -v WINUSER_PROFILE ]; then
-      export WINUSER_PROFILE=$(wslpath "$(wslvar USERPROFILE)")
-    fi
-  }
-
-  alias code='setWinUserProfile;$WINUSER_PROFILE/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+  # commands for wsl
 fi
 
 # other
