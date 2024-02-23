@@ -1,0 +1,6 @@
+{
+  "setup": {
+    "prefix": "dummy",
+    "body": [ "dummydummydummy" ]
+  }
+}
