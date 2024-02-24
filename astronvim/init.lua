@@ -11,6 +11,12 @@ return {
       end,
     },
     {
+      "kylechui/nvim-surround",
+      version = "*",
+      event = "VeryLazy",
+      config = function() require("nvim-surround").setup({}) end
+    },
+    {
       "nvim-neo-tree/neo-tree.nvim",
       opts = function(_, opts)
         opts.filesystem["window"] = { mappings = { ["<c-h>"] = "navigate_up" } }
