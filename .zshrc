@@ -29,6 +29,8 @@ alias dils='docker image ls'
 alias dninspect='docker network inspect'
 alias dnls='docker network ls'
 
+alias d-c='docker-compose'
+
 # exa
 if [ -x "$(command -v exa)" ]; then
   export EXA_COLORS="da=1;35"
