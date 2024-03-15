@@ -22,5 +22,20 @@ return {
         opts.filesystem["window"] = { mappings = { ["<c-h>"] = "navigate_up" } }
       end,
     },
+    {
+      "hrsh7th/nvim-cmp",
+      opts = function(_, opts)
+        local cmp = require "cmp"
+        local luasnip = require "luasnip"
+        opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
+          if luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { "i", "s" })
+        return opts
+      end,
+    },
   },
 }

@@ -11,4 +11,8 @@ keys["t"] = {
   ["<C-h>"] = false,
 }
 
+keys["x"] = {
+  ["v"] = { "<esc>", desc = "back to normal mode" },
+}
+
 return keys
