@@ -5,3 +5,9 @@
 
 [init]
     defaultBranch = main
+
+# https://bun.sh/docs/install/lockfile
+
+[diff "lockb"]
+	textconv = bun
+	binary = true
