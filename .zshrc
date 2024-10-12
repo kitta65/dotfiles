@@ -69,7 +69,7 @@ alias rstudio='\
 if ! [[ -d ~/.zsh/pure ]]; then
   git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi
-fpath+=($HOME/.zsh/pure)
+fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -80,13 +80,7 @@ zstyle :prompt:pure:prompt:success color green
 if ! [[ -d ~/.zsh/zsh-autosuggestions ]]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# wsl
-# See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
-if [ -n "$WSL_DISTRO_NAME" ]; then
-  # commands for wsl
-fi
+source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # other
 alias yyyymmdd='date "+%Y%m%d"'
