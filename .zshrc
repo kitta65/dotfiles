@@ -31,11 +31,14 @@ alias dnls='docker network ls'
 
 alias d-c='docker-compose'
 
-# exa
-if [ -x "$(command -v exa)" ]; then
+# eza
+if [ -x "$(command -v eza)" ]; then
   export EXA_COLORS="da=1;35"
-  alias ll='exa -lha'
-  alias tree='exa -T'
+  alias ll='eza --long --all'
+  alias tree='eza --tree'
+else
+  echo 'you can install eza. see https://github.com/eza-community/eza/blob/main/INSTALL.md' >&2
+  alias ll='ls -lha'
 fi
 
 # nvim
