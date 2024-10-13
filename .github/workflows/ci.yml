@@ -12,11 +12,9 @@ jobs:
           tar -xvf shellcheck-stable.linux.x86_64.tar.xz
           echo "$(pwd)/shellcheck-stable" >> "$GITHUB_PATH"
 
+      # NOTE `shellcheck ./**/*.sh` does not work...
       - name: lint bash script
-        run: |
-          ls -la
-          which shellcheck
-          shellcheck init.sh
+        run: find . -type f -name '*.sh' | xargs shellcheck
 
       - name: lint zsh script
-        run: shellcheck ./**/*.zsh
+        run: find . -type f -name '*.zsh' | xargs shellcheck
