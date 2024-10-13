@@ -1,3 +1,8 @@
+# shellcheck disable=SC2148
+
+# NOTE
+# This script is run by zsh but lint as bash script.
+
 # Yor .zshrc should contain recommended settings.
 # If not, this command is useful.
 # autoload -U zsh-newuser-install; zsh-newuser-install -f
@@ -69,7 +74,7 @@ alias rstudio='\
 if ! [[ -d ~/.zsh/pure ]]; then
   git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi
-fpath+=($HOME/.zsh/pure)
+fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -80,13 +85,8 @@ zstyle :prompt:pure:prompt:success color green
 if ! [[ -d ~/.zsh/zsh-autosuggestions ]]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# wsl
-# See https://stackoverflow.com/questions/38086185/how-to-check-if-a-program-is-run-in-bash-on-ubuntu-on-windows-and-not-just-plain
-if [ -n "$WSL_DISTRO_NAME" ]; then
-  # commands for wsl
-fi
+# shellcheck disable=SC1091
+source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # other
 alias yyyymmdd='date "+%Y%m%d"'
