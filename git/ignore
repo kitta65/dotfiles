@@ -10,6 +10,7 @@ Thumbs.db
 
 # python
 .python-version
+.venv/
 venv/
 
 temp/
