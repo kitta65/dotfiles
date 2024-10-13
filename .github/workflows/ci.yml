@@ -12,9 +12,18 @@ jobs:
           tar -xvf shellcheck-stable.linux.x86_64.tar.xz
           echo "$(pwd)/shellcheck-stable" >> "$GITHUB_PATH"
 
-      # NOTE `./**/*.sh` does not include current directory (in bash)
+      # NOTE instead of wildcard (**/*.sh), find is used to include current directory
       - name: lint bash script
-        run: find . -type f -name '*.sh' | xargs shellcheck
+        run: find . -type f -name '*.sh' -print0 | xargs -0 shellcheck
 
       - name: lint zsh script
-        run: find . -type f -name '*.zsh' | xargs shellcheck
+        run: find . -type f -name '*.zsh' -print0 | xargs -0 shellcheck
+
+  # see https://github.com/rhysd/actionlint/blob/main/docs/usage.md#use-actionlint-on-github-actions
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color
