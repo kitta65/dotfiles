@@ -25,7 +25,6 @@ rm "$HOME/.config/git" 2> /dev/null || true
 ln -s "$(pwd)/git" "$HOME/.config/git"
 
 # Neovim
-git submodule update
 rm "$HOME/.config/nvim" 2> /dev/null || true
 ln -s "$(pwd)/astronvim" "$HOME/.config/nvim"
 
