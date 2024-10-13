@@ -72,7 +72,7 @@ alias rstudio='\
 
 # pure
 if ! [[ -d ~/.zsh/pure ]]; then
-  git clone https://github.com/sindresorhus/pure.git $HOME/.zsh/pure
+  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit

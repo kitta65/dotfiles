@@ -12,7 +12,7 @@ jobs:
           tar -xvf shellcheck-stable.linux.x86_64.tar.xz
           echo "$(pwd)/shellcheck-stable" >> "$GITHUB_PATH"
 
-      # NOTE `shellcheck ./**/*.sh` does not work...
+      # NOTE `./**/*.sh` does not include current directory (in bash)
       - name: lint bash script
         run: find . -type f -name '*.sh' | xargs shellcheck
 
