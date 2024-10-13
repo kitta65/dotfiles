@@ -1,5 +1,5 @@
 {
-  "name": "user snippets",
+  "name": "user_snippets",
   "engines": {
     "vscode": "^1.11.0"
   },

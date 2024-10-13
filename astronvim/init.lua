@@ -1,44 +1,34 @@
-return {
-  plugins = {
-    -- https://docs.astronvim.com/recipes/snippets/
-    {
-      "L3MON4D3/LuaSnip",
-      config = function()
-        -- require "plugins.configs.luasnip"(plugin, opts)
-        require("luasnip.loaders.from_vscode").lazy_load {
-          paths = { "~/dotfiles/astronvim/snippets" }
-        }
-      end,
-    },
-    {
-      "kylechui/nvim-surround",
-      version = "*",
-      event = "VeryLazy",
-      config = function() require("nvim-surround").setup({}) end
-    },
-    {
-      "nvim-neo-tree/neo-tree.nvim",
-      opts = function(_, opts)
-        opts.filesystem["window"] = { mappings = { ["<c-h>"] = "navigate_up" } }
-      end,
-    },
-    {
-      "hrsh7th/nvim-cmp",
-      opts = function(_, opts)
-        local cmp = require "cmp"
-        local luasnip = require "luasnip"
-        opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { "i", "s" })
-        return opts
-      end,
+-- see https://lazy.folke.io/installation
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  {
+    "AstroNvim/AstroNvim",
+    version = "^4",
+    import = "astronvim.plugins",
+    opts = {
+      mapleader = " ",
+      maplocalleader = ",",
+      update_notifications = true,
     },
   },
-  lsp = {
-    formatting = { format_on_save = false },
+  { import = "plugins" },
+} --[[@as LazySpec]], {
+  install = { colorscheme = { "astrotheme", "habamax" } },
+  ui = { backdrop = 100 },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "zipPlugin",
+      },
+    },
   },
-}
+} --[[@as LazyConfig]])

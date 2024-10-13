@@ -25,9 +25,8 @@ rm "$HOME/.config/git" 2> /dev/null || true
 ln -s "$(pwd)/git" "$HOME/.config/git"
 
 # Neovim
-mkdir -p "$HOME/.config/astronvim/lua"
-rm "$HOME/.config/astronvim/lua/user" 2> /dev/null || true
-ln -s "$(pwd)/astronvim" "$HOME/.config/astronvim/lua/user"
+rm "$HOME/.config/nvim" 2> /dev/null || true
+ln -s "$(pwd)/astronvim" "$HOME/.config/nvim"
 
 # tmux
 rm "$HOME/.tmux.conf" 2> /dev/null || true
