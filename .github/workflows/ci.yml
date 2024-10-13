@@ -5,17 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: install shellcheck
-        run: |
-          curl -OL https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz
-          tar -xvf shellcheck-stable.linux.x86_64.tar.xz
-          echo "$(pwd)/shellcheck-stable" >> "$GITHUB_PATH"
-
-      # NOTE instead of wildcard (**/*.sh), find is used to include current directory
       - name: lint bash script
         run: find . -type f -name '*.sh' -print0 | xargs -0 shellcheck
-
       - name: lint zsh script
         run: find . -type f -name '*.zsh' -print0 | xargs -0 shellcheck
 
