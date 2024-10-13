@@ -1,3 +1,8 @@
+# shellcheck disable=SC2148
+
+# NOTE
+# This script is run by zsh but lint as bash script.
+
 # Yor .zshrc should contain recommended settings.
 # If not, this command is useful.
 # autoload -U zsh-newuser-install; zsh-newuser-install -f
@@ -80,6 +85,7 @@ zstyle :prompt:pure:prompt:success color green
 if ! [[ -d ~/.zsh/zsh-autosuggestions ]]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
+# shellcheck disable=SC1091
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # other

@@ -16,7 +16,7 @@ function initialize_file() {
 
 # zsh
 initialize_file "$HOME/.zshrc"
-echo "source $(pwd)/.zshrc ${dotfile_comment}" >> "$HOME/.zshrc"
+echo "source $(pwd)/zshrc.zsh ${dotfile_comment}" >> "$HOME/.zshrc"
 echo "export DOTFILES_DIR=$(pwd) ${dotfile_comment}" >> "$HOME/.zshrc"
 
 # Git
