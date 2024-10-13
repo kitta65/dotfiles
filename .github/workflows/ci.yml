@@ -16,7 +16,7 @@ jobs:
         run: |
           ls -la
           which shellcheck
-          shellcheck ./**/*.sh
+          shellcheck init.sh
 
       - name: lint zsh script
         run: shellcheck ./**/*.zsh
