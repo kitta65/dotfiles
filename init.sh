@@ -24,9 +24,14 @@ mkdir -p "$HOME/.config"
 rm "$HOME/.config/git" 2> /dev/null || true
 ln -s "$(pwd)/git" "$HOME/.config/git"
 
+# vscode
+git submodule update --init
+
 # Neovim
 rm "$HOME/.config/nvim" 2> /dev/null || true
 ln -s "$(pwd)/astronvim" "$HOME/.config/nvim"
+rm ./astronvim/snippets/snippets 2> /dev/null || true
+ln -s ../../vscode/snippets ./astronvim/snippets/snippets
 
 # tmux
 rm "$HOME/.tmux.conf" 2> /dev/null || true
