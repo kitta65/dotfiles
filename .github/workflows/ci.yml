@@ -13,7 +13,10 @@ jobs:
           echo "$(pwd)/shellcheck-stable" >> "$GITHUB_PATH"
 
       - name: lint bash script
-        run: shellcheck ./**/*.sh
+        run: |
+          ls -la
+          which shellcheck
+          shellcheck ./**/*.sh
 
       - name: lint zsh script
         run: shellcheck ./**/*.zsh
