@@ -1,4 +1,6 @@
 # https://stackoverflow.com/questions/6089294/how-to-avoid-having-to-do-git-branch-setup-upstream-and-instead-default-to
+[push]
+    autoSetupRemote = true
 
 [init]
     defaultBranch = main
