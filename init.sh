@@ -24,9 +24,19 @@ mkdir -p "$HOME/.config"
 rm "$HOME/.config/git" 2> /dev/null || true
 ln -s "$(pwd)/git" "$HOME/.config/git"
 
+# vscode
+git submodule update --init
+if [ "$(uname)" == 'Darwin' ]; then
+  vscode_user_config_dir="$HOME/Library/Application Support/Code/User"
+  rm -rf "$vscode_user_config_dir"
+  ln -s "$(pwd)/vscode" "$vscode_user_config_dir"
+fi
+
 # Neovim
 rm "$HOME/.config/nvim" 2> /dev/null || true
 ln -s "$(pwd)/astronvim" "$HOME/.config/nvim"
+rm ./astronvim/snippets/snippets 2> /dev/null || true
+ln -s ../../vscode/snippets ./astronvim/snippets/snippets
 
 # tmux
 rm "$HOME/.tmux.conf" 2> /dev/null || true
