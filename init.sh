@@ -49,8 +49,11 @@ if [[ -v WSL_DISTRO_NAME ]]; then
   else
     echo "Skip replacing /etc/wsl.conf because you do not have write permission."
   fi
+
   # See https://superuser.com/questions/1271205/how-to-get-the-host-user-home-directory-in-wsl-bash
   cp "$(pwd)/wsl/.wslconfig" "$(wslpath "$(wslvar USERPROFILE)")/.wslconfig"
   mkdir -p "$(wslpath "$(wslvar USERPROFILE)")/AppData/Roaming/alacritty"
   cp "$(pwd)/alacritty.yml" "$(wslpath "$(wslvar USERPROFILE)")/AppData/Roaming/alacritty"
+  rm -rf  "$HOME/downloads"
+  ln -s "$(wslpath "$(wslvar USERPROFILE)")/Downloads" "$HOME/downloads"
 fi
