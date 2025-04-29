@@ -37,6 +37,9 @@ rm "$HOME/.config/nvim" 2> /dev/null || true
 ln -s "$(pwd)/astronvim" "$HOME/.config/nvim"
 rm ./astronvim/snippets/snippets 2> /dev/null || true
 ln -s ../../vscode/snippets ./astronvim/snippets/snippets
+# TODO
+# if using WSL some tools should be installed
+# see https://askubuntu.com/questions/1486871/how-can-i-copy-and-paste-outside-of-neovim
 
 # tmux
 rm "$HOME/.tmux.conf" 2> /dev/null || true
