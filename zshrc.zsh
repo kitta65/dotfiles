@@ -21,20 +21,19 @@ elif [ -x "$(command -v bat)" ]; then
 fi
 
 # docker
-alias dcattach='docker container attach'
-alias dcexec='docker container exec -it'
-alias dcls='docker container ls -a'
-alias dcprune='docker container prune -f'
-alias dcrun='docker container run -it --rm'
-alias dcstop='docker container stop'
+alias dc='docker container'
+alias di='docker image'
+alias dn='docker network'
 
-alias dibuild='docker image build'
-alias dils='docker image ls'
+if [ -x "$(command -v docker-compose)" ]; then
+  alias d-c="docker-compose"
+else
+  alias d-c='docker compose'
+fi
 
-alias dninspect='docker network inspect'
-alias dnls='docker network ls'
-
-alias d-c='docker-compose'
+alias kg='kubectl get'
+alias ka='kubectl apply'
+alias kd='kubectl describe'
 
 # eza
 if [ -x "$(command -v eza)" ]; then
@@ -75,7 +74,8 @@ if ! [[ -d ~/.zsh/pure ]]; then
   git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi
 fpath+=("$HOME/.zsh/pure")
-autoload -U promptinit; promptinit
+autoload -U promptinit
+promptinit
 prompt pure
 
 zstyle :prompt:pure:path color cyan

@@ -9,8 +9,6 @@ Thumbs.db
 .settings/
 
 # python
-.python-version
 .venv/
-venv/
 
 .kitta65/
