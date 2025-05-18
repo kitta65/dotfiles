@@ -11,4 +11,4 @@ Thumbs.db
 # python
 .venv/
 
-.kitta65/
+*.kitta65*
